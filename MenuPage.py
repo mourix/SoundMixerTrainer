@@ -27,7 +27,6 @@ class MenuPage(QtWidgets.QWidget):
         self.setObjectName("menuPage")
         self.menuItems = ("Snel starten", "Laden uit SD-kaart")
         self.menuState = 1      # test varaibelen
-        self.dirs =[]
         font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
 
         # menu labels
@@ -137,15 +136,14 @@ class MenuPage(QtWidgets.QWidget):
         except:
             os.chdir("..")
 
-        dirnames = []
+        dirNames = []
         for dirs in os.listdir("SDMap"):
-            dirnames.append(os.path.join(dirs))
-            self.dirs = dirs
+            dirNames.append(os.path.join(dirs))
 
-        if self.DEBUG: print(dirnames)
+        if self.DEBUG: print(dirNames)
 
         self.menuState = 2
-        self.menuItems = dirnames
+        self.menuItems = dirNames
         self.set_menu_items()
         self.menuPos = 0
         self.set_selector()
