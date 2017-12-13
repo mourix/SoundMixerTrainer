@@ -14,8 +14,8 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-    uiItems = ["Song: -", "Kanaal: 1", "Sync", "Presets", "Repeat", "Terug"]
-    taskbarItems = ["Tijd: 0:00", "Repeat: uit", "Preset: -"]
+    uiItems = ["Song: -", "Channel: 1", "Sync", "Presets", "Repeat", "Back"]
+    taskbarItems = ["Time: 0:00", "Repeat: off", "Preset: -"]
     repeat = 0
     DEBUG = True
 
@@ -139,7 +139,7 @@ class PlayPage(QtWidgets.QWidget):
         else:
             secStr = str(sec)
 
-        self.taskbarItems[0] = "Tijd: " + minSrt + ":" + secStr
+        self.taskbarItems[0] = "Time: " + minSrt + ":" + secStr
         self.bottomLabel[0].setText(self.taskbarItems[0])
 
         # Repeat
@@ -188,7 +188,7 @@ class PlayPage(QtWidgets.QWidget):
             self.AudioController.set_random_preset()
 
         self.update_play_stats()
-        print("Preset " + str(btnId+1) + ": preset geselecteerd")
+        print("Preset " + str(btnId+1) + ": preset selected")
 
     # kanaal hardwareknoppen
     def channel_button_pushed(self, btnId):
@@ -226,10 +226,10 @@ class PlayPage(QtWidgets.QWidget):
     def toggle_repeat(self):
         if self.repeat == 0:
             self.repeat = 1
-            self.taskbarItems[1] = "Repeat: aan"
+            self.taskbarItems[1] = "Repeat: on"
         else:
             self.repeat = 0
-            self.taskbarItems[1] = "Repeat: uit"
+            self.taskbarItems[1] = "Repeat: off"
         self.bottomLabel[1].setText(self.taskbarItems[1])
 
     def rotary_rotate(self, rotId, direction):
@@ -243,7 +243,7 @@ class PlayPage(QtWidgets.QWidget):
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
         self.uiItems[0] = "Song: " + str(self.AudioController.currentChannel.song)
-        self.uiItems[1] = "Kanaal: " + str(self.AudioController.get_current_channel() + 1)
+        self.uiItems[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1)
         self.UIController.update_main_texts(2)
 
         self.taskbarItems[2] = "Preset: " + str(

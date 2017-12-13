@@ -106,10 +106,10 @@ class UIController(object):
         for i in range(6):
             def make_lambda(j): return lambda b: self.page[self.stackedWidget.currentIndex()].rotary_button_pushed(j)
             self.debugRotaryButton[i] = QtWidgets.QPushButton(self.centralwidget)
-            self.debugRotaryButton[i].setGeometry(QtCore.QRect(i * 80, 430, 80, 30))
+            self.debugRotaryButton[i].setGeometry(QtCore.QRect(i * 80, 420, 80, 30))
             self.debugRotaryButton[i].setObjectName("pushButton_" + str(i))
             if i != 5:
-                self.debugRotaryButton[i].setText("Reset Band" + str(i + 1))
+                self.debugRotaryButton[i].setText("Rotary" + str(i + 1))
             else:
                 self.debugRotaryButton[i].setText("Mute")
             self.debugRotaryButton[i].clicked.connect(make_lambda(i))
@@ -129,7 +129,7 @@ class UIController(object):
         self.stackedWidget.addWidget(self.page[2])
 
         MainWindow.setCentralWidget(self.centralwidget)
-        MainWindow.setWindowTitle("Sound Mixer Tool Demo UI")
+        MainWindow.setWindowTitle("Sound Mixer Trainer")
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

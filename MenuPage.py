@@ -15,8 +15,8 @@ class MenuPage(QtWidgets.QWidget):
     Initialiseerd de menupagina en loopt door een array van opties heen.
     """
 
-    uiItems = ("Hoofdmenu", "Kies item", "▼", "▲", "Selecteer", "Terug")
-    menuItems = ["Snel starten", "Laden uit SD-kaart"]
+    uiItems = ("Main menu", "Choose item", "▼", "▲", "Select", "Back")
+    menuItems = ["Quick start", "Load from SD card"]
     menuPos = 0
     DEBUG = True
 
@@ -25,7 +25,7 @@ class MenuPage(QtWidgets.QWidget):
         self.UIController = ui
         self.AudioController = AudioController
         self.setObjectName("menuPage")
-        self.menuItems = ("Snel starten", "Laden uit SD-kaart")
+        self.menuItems = ["Quick start", "Load from SD card"]
         self.menuState = 1      # test varaibelen
         font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
 
@@ -93,7 +93,7 @@ class MenuPage(QtWidgets.QWidget):
                 self.UIController.previous_page()
             elif self.menuState == 2:
                 self.menuItems.clear()
-                self.menuItems = ["Snel starten", "Laden uit SD-kaart"]
+                self.menuItems = ["Quick start", "Load from SD card"]
                 self.set_menu_items()
                 self.menuPos = 0
                 self.set_selector()
