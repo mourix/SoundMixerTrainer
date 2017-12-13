@@ -25,8 +25,7 @@ class MenuPage(QtWidgets.QWidget):
         self.UIController = ui
         self.AudioController = AudioController
         self.setObjectName("menuPage")
-        self.menuItems = ["Quick start", "Load from SD card"]
-        self.menuState = 1      # test varaibelen
+        self.menuState = 1      # test variabelen
         font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
 
         # menu labels
@@ -39,9 +38,10 @@ class MenuPage(QtWidgets.QWidget):
 
         # menupijl
         self.menuArrow = QtWidgets.QLabel(self)
-        self.menuArrow.setGeometry(QtCore.QRect(20, 0, 41, 21))
+        self.menuArrow.setGeometry(QtCore.QRect(35, 0, 45, 21))
         self.menuArrow.setFont(font)
         self.menuArrow.setObjectName("menuArrow")
+        self.menuArrow.setText("➔")
 
         self.set_menu_items()
 
@@ -52,8 +52,7 @@ class MenuPage(QtWidgets.QWidget):
 
         # vul menu met elementen
         for i in range(len(self.menuItems)):
-            self.menuLabel[i].setText(self.menuItems[i])
-        self.menuArrow.setText("-->")
+            self.menuLabel[i].setText(str(i+1) + ". " + self.menuItems[i])
 
     # play, stop, terug
     def action_button_pushed(self, btnId):
@@ -119,7 +118,7 @@ class MenuPage(QtWidgets.QWidget):
 
     # verplaats menupijl
     def set_selector(self):
-        self.menuArrow.move(20, (self.menuPos * 30))
+        self.menuArrow.move(35, (self.menuPos * 30))
 
     def rotary_rotate(self, RotId, direction):
         pass
@@ -130,7 +129,7 @@ class MenuPage(QtWidgets.QWidget):
 
         try:
             os.listdir("SDMap")
-        except:
+        except FileNotFoundError:
             os.chdir("..")
 
         dirNames = []
@@ -144,4 +143,3 @@ class MenuPage(QtWidgets.QWidget):
         self.set_menu_items()
         self.menuPos = 0
         self.set_selector()
-        return

@@ -100,7 +100,7 @@ class AudioController(object):
             with open(PIK, "rb") as f:
                 if self.DEBUG: print("AudioController presets geladen")
                 return pickle.load(f)
-        except:
+        except FileNotFoundError:
             if self.DEBUG: print("AudioController: Geen presets gevonden")
             return self.create_presets(PIK)
 
@@ -127,7 +127,7 @@ class AudioController(object):
         presets.append(Preset(eqBanden5, volume, preamp, 5))
         presets.append(Preset(eqBanden6, volume, preamp, 6))
 
-        if self.DEBUG: print("presets zijn aangemaakt")
+        if self.DEBUG: print("Presets zijn aangemaakt")
         self.save_presets(PIK, presets)
         return presets
 
