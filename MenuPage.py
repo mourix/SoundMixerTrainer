@@ -15,7 +15,7 @@ class MenuPage(QtWidgets.QWidget):
     Initialiseerd de menupagina en loopt door een array van opties heen.
     """
 
-    uiItems = ("Hoofdmenu", "Kies item", "▼", "▲", "Selecteer", "pass")
+    uiItems = ("Hoofdmenu", "Kies item", "▼", "▲", "Selecteer", "Terug")
     menuItems = ["Snel starten", "Laden uit SD-kaart"]
     menuPos = 0
     DEBUG = True
@@ -75,7 +75,7 @@ class MenuPage(QtWidgets.QWidget):
             self.set_selector()
 
         # volgende/play
-        elif btnId == 2 or btnId == 5:
+        elif btnId == 2 or btnId == 4:
             if self.menuState == 1:
                 if self.menuPos == 0:
                     self.UIController.next_page()
@@ -88,11 +88,8 @@ class MenuPage(QtWidgets.QWidget):
                 self.AudioController.dir_play(self.menuItems[self.menuPos])
                 self.UIController.page[2].update_play_stats()
 
-        elif btnId == 3:
-            pass
-
         # vorige
-        elif btnId == 4:
+        elif btnId == 3:
             if self.menuState == 1:
                 self.UIController.previous_page()
             elif self.menuState == 2:
@@ -103,7 +100,7 @@ class MenuPage(QtWidgets.QWidget):
                 self.set_selector()
                 self.menuState = 1
 
-        elif btnId == 6:
+        elif btnId == 5:
             self.AudioController.stop_all()
 
     # preset hardwareknoppen

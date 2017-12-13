@@ -14,7 +14,7 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-    uiItems = ["Song: -", "Kanaal: 1", "Sync", "Presets", "Repeat", "Menu"]
+    uiItems = ["Song: -", "Kanaal: 1", "Sync", "Presets", "Repeat", "Terug"]
     taskbarItems = ["Tijd: 0:00", "Repeat: uit", "Preset: -"]
     repeat = 0
     DEBUG = True
@@ -168,24 +168,17 @@ class PlayPage(QtWidgets.QWidget):
         elif btnId == 3:
             self.UIController.previous_page()
 
-        # vorige
-        elif btnId == 4:
-            self.UIController.previous_page()
-
         # play
-        if btnId == 5:
+        if btnId == 4:
             self.uiItems[0] = "Song: Playing"
             self.UIController.update_main_texts(2)
             self.AudioController.play_all()
             self.update_play_stats()
 
         # stop
-        elif btnId == 6:
+        elif btnId == 5:
             self.AudioController.stop_all()
 
-        # terug
-        elif btnId == 7:
-            self.UIController.previous_page()
 
     # preset hardwareknoppen
     def preset_button_pushed(self, btnId):

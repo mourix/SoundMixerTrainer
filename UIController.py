@@ -71,9 +71,9 @@ class UIController(object):
             self.pushButton[i].clicked.connect(make_lambda(i))
 
         # knoppen voor debug: play, stop, terug
-        self.debugActionLabel = ("TERUG", "PLAY", "STOP" )
-        self.debugActionbutton = [0 for i in range(3)]
-        for i in range(3):
+        self.debugActionLabel = ("PLAY", "STOP")
+        self.debugActionbutton = [0 for i in range(2)]
+        for i in range(2):
             def make_lambda(j): return lambda b: self.page[self.stackedWidget.currentIndex()].action_button_pushed(j+4)
             self.debugActionbutton[i] = QtWidgets.QPushButton(self.centralwidget)
             self.debugActionbutton[i].setGeometry(QtCore.QRect(i*120, 330, 120, 30))
