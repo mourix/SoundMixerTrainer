@@ -22,6 +22,7 @@ class AudioController(object):
     def __init__(self):
         self.audioPlayers = []
         self.currentChannelIndex = 0
+        self.channelAmount = 8
         self.presets = self.load_presets(self.PIK)
 
         # maak VLC kanalen aan
@@ -29,7 +30,7 @@ class AudioController(object):
             if self.DEBUG: print("Channel " + str(c) + ":")
             self.audioPlayers.append(AudioPlayer(self.presets[0]))
 
-        self.currentChannel = self.audioPlayers[self.currentChannelIndex]  # zet huidige kanaal op cCurrent
+        self.currentChannel = self.audioPlayers[self.currentChannelIndex]  # zet huidige kanaal op currentChannel
 
         # raspberry pi: zet elke speler op een eigen kanaal
         if os.name == "posix":
@@ -43,7 +44,7 @@ class AudioController(object):
 
     # zet alle kanalen gelijk aan kanaal 1
     def sync_channels(self,):
-        for i in range(7):
+        for i in range(self.channelAmount - 1):
             self.audioPlayers[i+1].set_time(self.audioPlayers[0].get_time())
         if self.DEBUG: print("Synced all channels to channel 1")
 
@@ -51,18 +52,18 @@ class AudioController(object):
         self.audioPlayers[channel].set_media(song)
 
     def play_all(self):
-        for c in range(8):
+        for c in range(self.channelAmount):
             self.audioPlayers[c].play_song()
         if self.DEBUG: print("Playing all")
         self.sync_channels()
 
     def stop_all(self):
-        if self.DEBUG: print("Stopping all")
-        for c in range(8):
+        for c in range(self.channelAmount):
             self.audioPlayers[c].stop_song()
+        if self.DEBUG: print("Stopping all")
 
     def prev_channel(self):
-        if self.currentChannelIndex < 7:
+        if self.currentChannelIndex < (self.channelAmount-1):
             self.currentChannelIndex += 1
             self.currentChannel = self.audioPlayers[self.currentChannelIndex]
         else:
@@ -74,7 +75,7 @@ class AudioController(object):
             self.currentChannelIndex -= 1
             self.currentChannel = self.audioPlayers[self.currentChannelIndex]
         else:
-            self.currentChannelIndex = 7
+            self.currentChannelIndex = (self.channelAmount-1)
             self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
     def set_current_channel(self, channel):
@@ -92,7 +93,7 @@ class AudioController(object):
             self.audioPlayers[channel].set_eq_band_amp(0, b)
 
     def reset_eq_all(self):
-        for c in range(8):
+        for c in range(self.channelAmount):
             self.reset_eq_channel(c)
 
     def load_presets(self, PIK):
@@ -176,9 +177,11 @@ class AudioController(object):
                 if filename.endswith(".mp3") or filename.endswith(".wav"):
                     files.append(filename)
 
-            for c in range(8):
+            self.channelAmount = 8
+
+            for c in range(self.channelAmount):
                 self.set_channel_song(c, files[c])
-                if self.DEBUG: print("Channel " + str(c) + ": " + files[c])
+                if self.DEBUG: print("Channel " + str(c+1) + ": " + files[c])
 
         except:
             if self.DEBUG: print("QuickPlay ERROR: Can't find path. No songs have been loaded.")
@@ -208,10 +211,13 @@ class AudioController(object):
             if filename.endswith(".mp3") or filename.endswith(".wav"):
                 files.append(filename)
 
-        for c in range(8):
+        self.stop_all()
+        self.channelAmount = len(files)
+
+        for c in range(self.channelAmount):
             try:
                 self.set_channel_song(c, files[c])
-                if self.DEBUG: print("Channel " + str(c) + ": " + files[c])
+                if self.DEBUG: print("Channel " + str(c+1) + ": " + files[c])
             except:
                 if self.DEBUG: print("dir_play: fout in het laden van de bestanden")
 

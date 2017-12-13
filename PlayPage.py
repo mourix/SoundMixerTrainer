@@ -14,7 +14,7 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-    uiItems = ["Song: -", "Channel: 1", "Sync", "Presets", "Repeat", "Back"]
+    uiItems = ["", "", "Sync", "Presets", "Repeat", "Back"]
     taskbarItems = ["Time: 0:00", "Repeat: off", "Preset: -"]
     repeat = 0
     DEBUG = True
@@ -175,8 +175,6 @@ class PlayPage(QtWidgets.QWidget):
 
         # play
         if btnId == 4:
-            self.uiItems[0] = "Song: Playing"
-            self.UIController.update_main_texts(2)
             self.AudioController.play_all()
             self.update_play_stats()
 
@@ -196,9 +194,12 @@ class PlayPage(QtWidgets.QWidget):
 
     # kanaal hardwareknoppen
     def channel_button_pushed(self, btnId):
-        self.AudioController.set_current_channel(btnId)
-        self.update_play_stats()
-        print("Channel " + str(btnId+1) + ": set display")
+        if btnId <= (self.AudioController.channelAmount-1):
+            self.AudioController.set_current_channel(btnId)
+            self.update_play_stats()
+            print("Channel " + str(btnId+1) + ": set display")
+        else:
+            print("Channel " + str(btnId+1) + ": not playing")
 
     # reset de eq banden en toggle geluid.
     def rotary_button_pushed(self, btnId):
@@ -206,15 +207,12 @@ class PlayPage(QtWidgets.QWidget):
             self.AudioController.reset_eq_band(btnId)
         else:
             self.AudioController.currentChannel.toggle_mute()
-
         self.update_play_stats()
 
     # update EQ amp
     def eq_changed(self, sldId, sldValue):
-        #self.AudioController.currentChannel.set_eq_band_amp(sldValue, sldId)
-        self.AudioController.currentChannel.set_eq_band_amp(sldValue, sldId) # snelheids test
+        self.AudioController.currentChannel.set_eq_band_amp(sldValue, sldId)
         self.eqAmpLabel[sldId].setText(str(sldValue) + "dB")
-
 
     # update volume
     def volume_changed(self, sldvalue):
@@ -223,7 +221,6 @@ class PlayPage(QtWidgets.QWidget):
         else:
             for i in range(8):
                 self.AudioController.audioPlayers[i].set_volume(sldvalue)
-
         self.volLabel.setText(str(sldvalue))
 
     # zet repeat aan of uit
@@ -247,7 +244,8 @@ class PlayPage(QtWidgets.QWidget):
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
         self.uiItems[0] = "Song: " + str(self.AudioController.currentChannel.song)
-        self.uiItems[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1)
+        self.uiItems[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1) \
+                          + "/" + str(self.AudioController.channelAmount)
         self.UIController.update_main_texts(2)
 
         self.taskbarItems[2] = "Preset: " + str(
@@ -260,7 +258,7 @@ class PlayPage(QtWidgets.QWidget):
         self.volSlider.setValue(self.AudioController.currentChannel.get_volume())
 
         muteState = self.AudioController.currentChannel.get_mute()
-        if  muteState == 0:
+        if muteState == 0:
             self.eqFreqLabel[5].setText("Volume")
         else:
             self.eqFreqLabel[5].setText("Muted")

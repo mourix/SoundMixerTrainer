@@ -34,7 +34,7 @@ class IntroPage(QtWidgets.QWidget):
         self.introLabel_1.setObjectName("introLabel_1")
         self.infoLabel_0.setText("Sound Mixer Trainer V1")
         self.introLabel_1.setText("Made by: \n"
-                                  "Matthijs, Jos, Trevor, Rémon en Suzanne\n(c) 2018\n\n\n"
+                                  "Matthijs, Jos, Trevor, Rémon, Suzanne\n(c) 2018\n\n\n"
                                   "Press any key to continue.")
 
     # "press any key"

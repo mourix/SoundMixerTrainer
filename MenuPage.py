@@ -78,13 +78,13 @@ class MenuPage(QtWidgets.QWidget):
                 if self.menuPos == 0:
                     self.UIController.next_page()
                     self.AudioController.quick_play()
-                    self.UIController.page[2].update_play_stats()
                 else:
                     self.update_menu()
             elif self.menuState == 2:
                 self.UIController.next_page()
                 self.AudioController.dir_play(self.menuItems[self.menuPos])
-                self.UIController.page[2].update_play_stats()
+            self.AudioController.set_current_channel(0)
+            self.UIController.page[2].update_play_stats()
 
         # vorige
         elif btnId == 3:
