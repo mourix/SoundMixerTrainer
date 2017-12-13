@@ -86,7 +86,7 @@ class UIController(object):
         for i in range(6):
             def make_lambda(j): return lambda b: self.page[self.stackedWidget.currentIndex()].preset_button_pushed(j)
             self.debugPresetButton[i] = QtWidgets.QPushButton(self.centralwidget)
-            self.debugPresetButton[i].setGeometry(QtCore.QRect(i*60, 360, 60, 30))
+            self.debugPresetButton[i].setGeometry(QtCore.QRect(i*80, 360, 80, 30))
             self.debugPresetButton[i].setObjectName("pushButton_" + str(i))
             self.debugPresetButton[i].setText("PR" + str(i+1))
             self.debugPresetButton[i].clicked.connect(make_lambda(i))
@@ -109,7 +109,7 @@ class UIController(object):
             self.debugRotaryButton[i].setGeometry(QtCore.QRect(i * 80, 420, 80, 30))
             self.debugRotaryButton[i].setObjectName("pushButton_" + str(i))
             if i != 5:
-                self.debugRotaryButton[i].setText("Rotary" + str(i + 1))
+                self.debugRotaryButton[i].setText("EQ" + str(i + 1))
             else:
                 self.debugRotaryButton[i].setText("Mute")
             self.debugRotaryButton[i].clicked.connect(make_lambda(i))

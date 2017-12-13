@@ -54,7 +54,7 @@ class AudioController(object):
         for c in range(8):
             self.audioPlayers[c].play_song()
         if self.DEBUG: print("Playing all")
-        #self.sync_channels()
+        self.sync_channels()
 
     def stop_all(self):
         if self.DEBUG: print("Stopping all")

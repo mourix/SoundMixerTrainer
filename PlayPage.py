@@ -126,20 +126,25 @@ class PlayPage(QtWidgets.QWidget):
         self.timer.timeout.connect(self.update_timer)
         self.timer.start(900)
 
-    # update afspeeltijd
+    # zet milliseconden om naar tijdsformaat string
+    def ms_to_time_string(self, ms):
+        totalSecs = int(ms/1000)
+        minStr = str(int(totalSecs / 60))
+        leftSecs = totalSecs % 60
+
+        if leftSecs < 10:
+            secStr = "0" + str(leftSecs)
+        else:
+            secStr = str(leftSecs)
+
+        return minStr + ":" + secStr
+
+    # update afspeeltijd en repeat
     def update_timer(self):
 
-        # afspeeltijd
-        playSecs = int(self.AudioController.currentChannel.get_time() / 1000)
-        minSrt = str(int(playSecs / 60))
-        sec = playSecs % 60
-
-        if sec < 10:
-            secStr = "0" + str(sec)
-        else:
-            secStr = str(sec)
-
-        self.taskbarItems[0] = "Time: " + minSrt + ":" + secStr
+        # update afspeeltijd
+        self.taskbarItems[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
+                               + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
         self.bottomLabel[0].setText(self.taskbarItems[0])
 
         # Repeat
@@ -178,7 +183,6 @@ class PlayPage(QtWidgets.QWidget):
         # stop
         elif btnId == 5:
             self.AudioController.stop_all()
-
 
     # preset hardwareknoppen
     def preset_button_pushed(self, btnId):

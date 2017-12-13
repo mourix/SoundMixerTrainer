@@ -86,6 +86,10 @@ class AudioPlayer(object):
         if self.DEBUG: print("AudioPlayer: Volume " + str(self.get_volume()))
         return vol
 
+    # lees nummerlengte uit
+    def get_lenght(self):
+        return vlc.libvlc_media_player_get_length(self.player)
+
     # lees afspeeltijd uit
     def get_time(self):
         return vlc.libvlc_media_player_get_time(self.player)
