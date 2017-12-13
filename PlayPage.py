@@ -26,7 +26,7 @@ class PlayPage(QtWidgets.QWidget):
         self.setObjectName("playPage")
         font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
 
-        self.allChannelState = 0
+        self.allChannelState = 0        # Debug code
 
         # maak onderbalk lijn
         self.setObjectName("playPage")
@@ -130,7 +130,7 @@ class PlayPage(QtWidgets.QWidget):
     def update_timer(self):
 
         # afspeeltijd
-        playSecs = int(self.AudioController.audioPlayers[self.AudioController.get_current_channel()].get_time() / 1000)
+        playSecs = int(self.AudioController.currentChannel.get_time() / 1000)
         minSrt = str(int(playSecs / 60))
         sec = playSecs % 60
 
@@ -208,21 +208,21 @@ class PlayPage(QtWidgets.QWidget):
         if btnId != 5:
             self.AudioController.reset_eq_band(btnId)
         else:
-            self.AudioController.audioPlayers[self.AudioController.get_current_channel()].toggle_mute()
+            self.AudioController.currentChannel.toggle_mute()
 
         self.update_play_stats()
 
     # update EQ amp
     def eq_changed(self, sldId, sldValue):
-        #self.AudioController.audioPlayers[self.AudioController.get_current_channel()].set_eq_band_amp(sldValue, sldId)
-        self.AudioController.cChannel.set_eq_band_amp(sldValue, sldId) # snelheids test
+        #self.AudioController.currentChannel.set_eq_band_amp(sldValue, sldId)
+        self.AudioController.currentChannel.set_eq_band_amp(sldValue, sldId) # snelheids test
         self.eqAmpLabel[sldId].setText(str(sldValue) + "dB")
 
 
     # update volume
     def volume_changed(self, sldvalue):
         if self.allChannelState == 0:
-            self.AudioController.audioPlayers[self.AudioController.get_current_channel()].set_volume(sldvalue)
+            self.AudioController.currentChannel.set_volume(sldvalue)
         else:
             for i in range(8):
                 self.AudioController.audioPlayers[i].set_volume(sldvalue)
@@ -241,28 +241,28 @@ class PlayPage(QtWidgets.QWidget):
 
     def rotary_rotate(self, rotId, direction):
         if rotId is not 6:
-            sldvalue = self.AudioController.AudioPlayers[self.AudioController.get_current_channel()].bump_eq_band_amp(rotId, direction)
+            sldvalue = self.AudioController.currentChannel.bump_eq_band_amp(rotId, direction)
             self.eqAmpLabel[rotId].setText(str(sldvalue) + "dB")
         else:
-            sldvalue = self.AudioController.AudioPlayers[self.AudioController.get_current_channel()].bump_volume(direction)
+            sldvalue = self.AudioController.currentChannel.bump_volume(direction)
             self.eqAmpLabel[rotId].setText(str(sldvalue) + "dB")
 
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
-        self.uiItems[0] = "Song: " + str(self.AudioController.audioPlayers[self.AudioController.get_current_channel()].song)
+        self.uiItems[0] = "Song: " + str(self.AudioController.currentChannel.song)
         self.uiItems[1] = "Kanaal: " + str(self.AudioController.get_current_channel() + 1)
         self.UIController.update_main_texts(2)
 
         self.taskbarItems[2] = "Preset: " + str(
-            self.AudioController.audioPlayers[self.AudioController.get_current_channel()].preset.get_id())
+            self.AudioController.currentChannel.preset.get_id())
         self.bottomLabel[2].setText(self.taskbarItems[2])
 
         for i in range(5):
-            self.eqSlider[i].setValue(self.AudioController.audioPlayers[self.AudioController.get_current_channel()].get_eq_band_amp(i))
+            self.eqSlider[i].setValue(self.AudioController.currentChannel.get_eq_band_amp(i))
 
-        self.volSlider.setValue(self.AudioController.audioPlayers[self.AudioController.get_current_channel()].get_volume())
+        self.volSlider.setValue(self.AudioController.currentChannel.get_volume())
 
-        muteState = self.AudioController.audioPlayers[self.AudioController.get_current_channel()].get_mute()
+        muteState = self.AudioController.currentChannel.get_mute()
         if  muteState == 0:
             self.eqFreqLabel[5].setText("Volume")
         else:

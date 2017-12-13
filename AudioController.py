@@ -21,7 +21,7 @@ class AudioController(object):
 
     def __init__(self):
         self.audioPlayers = []
-        self.currentChannel = 0
+        self.currentChannelIndex = 0
         self.presets = self.load_presets(self.PIK)
 
         # maak VLC kanalen aan
@@ -29,7 +29,7 @@ class AudioController(object):
             if self.DEBUG: print("Channel " + str(c) + ":")
             self.audioPlayers.append(AudioPlayer(self.presets[0]))
 
-        self.cChannel = self.audioPlayers[self.currentChannel]  # zet huidige kanaal op cCurrent
+        self.currentChannel = self.audioPlayers[self.currentChannelIndex]  # zet huidige kanaal op cCurrent
 
         # raspberry pi: zet elke speler op een eigen kanaal
         if os.name == "posix":
@@ -62,30 +62,30 @@ class AudioController(object):
             self.audioPlayers[c].stop_song()
 
     def prev_channel(self):
-        if self.currentChannel < 7:
-            self.currentChannel += 1
-            self.cChannel = self.audioPlayers[self.currentChannel]
+        if self.currentChannelIndex < 7:
+            self.currentChannelIndex += 1
+            self.currentChannel = self.audioPlayers[self.currentChannelIndex]
         else:
-            self.currentChannel = 0
-            self.cChannel = self.audioPlayers[self.currentChannel]
+            self.currentChannelIndex = 0
+            self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
     def next_channel(self):
-        if self.currentChannel > 0:
-            self.currentChannel -= 1
-            self.cChannel = self.audioPlayers[self.currentChannel]
+        if self.currentChannelIndex > 0:
+            self.currentChannelIndex -= 1
+            self.currentChannel = self.audioPlayers[self.currentChannelIndex]
         else:
-            self.currentChannel = 7
-            self.cChannel = self.audioPlayers[self.currentChannel]
+            self.currentChannelIndex = 7
+            self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
     def set_current_channel(self, channel):
-        self.currentChannel = channel
-        self.cChannel = self.audioPlayers[self.currentChannel]
+        self.currentChannelIndex = channel
+        self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
     def get_current_channel(self):
-        return self.currentChannel
+        return self.currentChannelIndex
 
     def reset_eq_band(self, band):
-        self.audioPlayers[self.currentChannel].set_eq_band_amp(0, band)
+        self.audioPlayers[self.currentChannelIndex].set_eq_band_amp(0, band)
 
     def reset_eq_channel(self, channel):
         for b in range(5):
@@ -132,7 +132,7 @@ class AudioController(object):
         return presets
 
     def set_channel_preset(self, id):
-        self.cChannel.set_preset(self.presets[id])
+        self.currentChannel.set_preset(self.presets[id])
 
     def get_channel_preset(self, channel):
         #return preset
