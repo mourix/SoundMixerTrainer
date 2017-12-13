@@ -1,8 +1,8 @@
-"""Naam:
+"""Naam: Preset.py
 Versie:
 Beschrijving:
 
-Auteurs:
+Auteurs: Matthijs Daggelders
 """
 
 

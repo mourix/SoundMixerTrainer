@@ -1,8 +1,8 @@
-"""Naam:
+"""Naam: InputController.py
 Versie:
 Beschrijving:
 
-Auteurs:
+Auteurs: Matthijs Daggelders
 """
 
 

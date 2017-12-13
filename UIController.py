@@ -2,7 +2,7 @@
 Versie:
 Beschrijving:
 
-Auteurs: Jos van Mourik & Matthijs Daggelders
+Auteurs: Jos van Mourik (& Matthijs Daggelders)
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets

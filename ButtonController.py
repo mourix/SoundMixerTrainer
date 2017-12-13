@@ -1,8 +1,8 @@
-"""Naam:
+"""Naam: ButtonController.py
 Versie:
 Beschrijving:
 
-Auteurs:
+Auteurs: Matthijs Daggelders
 """
 
 import UIController

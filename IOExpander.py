@@ -1,8 +1,8 @@
-"""Naam:
+"""Naam: IOExpander.py
 Versie:
 Beschrijving:
 
-Auteurs:
+Auteurs: Matthijs Daggelders
 """
 
 
