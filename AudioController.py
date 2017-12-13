@@ -177,6 +177,7 @@ class AudioController(object):
                 if filename.endswith(".mp3") or filename.endswith(".wav"):
                     files.append(filename)
 
+            self.stop_all()
             self.channelAmount = 8
 
             for c in range(self.channelAmount):
