@@ -40,6 +40,9 @@ class Preset(object):
         else:
             return self.eqBanden[band]
 
+    def get_eq_bands(self):
+        return self.eqBanden
+
     # Zet de volume op een bepaalde equalizer band.
     def set_volume(self, volume):
         if (volume > 100) or (volume < 0):

@@ -17,6 +17,8 @@ class AudioController(object):
     Omvat alle instellingen en functies van de 8 audiokanalen.
     """
     PIK = "presets.dat"
+    PIK2 = "8chpreset.dat"
+    ROOT = "C:/Users/M/Documents/GitHub/SoundMixerTrainer"
     DEBUG = True
 
     def __init__(self):
@@ -24,6 +26,7 @@ class AudioController(object):
         self.currentChannelIndex = 0
         self.channelAmount = 8
         self.presets = self.load_presets(self.PIK)
+        self.multiChannelPresets = self.load_presets(self.PIK2)
 
         # maak VLC kanalen aan
         for c in range(8):
@@ -109,9 +112,15 @@ class AudioController(object):
                 return pickle.load(f)
         except FileNotFoundError:
             if self.DEBUG: print("AudioController: Geen presets gevonden")
-            return self.create_presets(PIK)
+            if PIK == self.PIK:
+                return self.create_presets(PIK)
+            else:
+                return self.create_8ch_presets(PIK)
 
     def save_presets(self, PIK, presets):
+        # aanpassen aan de dir die gevolgd moet worden
+        os.chdir(self.ROOT)
+
         with open(PIK, "wb") as f:
             pickle.dump(presets, f)
             if self.DEBUG: print("AudioController: presets opgeslagen")
@@ -138,12 +147,41 @@ class AudioController(object):
         self.save_presets(PIK, presets)
         return presets
 
+
+    def create_8ch_presets(self, PIK):
+        multiChannelPreset = []
+        multiChannelPresets = []
+
+        for i in range(8):
+            multiChannelPreset.append(self.presets[0])
+
+        for j in range (10):
+            multiChannelPresets.append(multiChannelPreset)
+
+        self.save_presets(PIK, multiChannelPresets)
+
+        return multiChannelPresets
+
+    def save_8ch_presets(self, index):
+        multiChannelPreset = []
+
+        for i in range(self.channelAmount):
+            multiChannelPreset.append(self.audioPlayers[i].get_preset())
+
+        self.multiChannelPresets[index] = multiChannelPreset
+
+        self.save_presets(self.PIK2, self.multiChannelPresets)
+
+    def load_8ch_presets(self, index):
+        for i in range(self.channelAmount):
+            self.audioPlayers[i].set_preset(self.multiChannelPresets[index][i])
+
     def set_channel_preset(self, id):
         self.currentChannel.set_preset(self.presets[id])
 
     def get_channel_preset(self, channel):
         #return preset
-        pass
+        return
 
     def set_random_preset(self):
         banden = [0, 0, 0, 0, 0]

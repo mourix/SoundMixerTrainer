@@ -188,7 +188,13 @@ class AudioPlayer(object):
 
     # returnt de huidige preset??????
     def get_preset(self):
-        return self.preset
+        eqBanden = []
+
+        for i in range(5):
+            eqBanden.append(self.get_eq_band_amp(i))
+
+        preset = Preset(eqBanden, 100, 0, 1)
+        return preset
 
     # mute de player
     def toggle_mute(self):

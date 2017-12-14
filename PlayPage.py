@@ -263,13 +263,13 @@ class PlayPage(QtWidgets.QWidget):
 
             # Ga een presets hoger
             elif self.menuState == 4:
-                if self.presetIndex < 10:
+                if self.presetIndex <= len(self.AudioController.multiChannelPresets):
                     self.presetIndex += 1
                 self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
 
             # Ga een presets hoger
             elif self.menuState == 5:
-                if self.presetIndex < 10:
+                if self.presetIndex < len(self.AudioController.multiChannelPresets):
                     self.presetIndex += 1
                 self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
 
@@ -297,15 +297,24 @@ class PlayPage(QtWidgets.QWidget):
 
             # Save presets
             elif self.menuState == 4:
-                pass
+                self.AudioController.save_8ch_presets(self.presetIndex - 1)
+                self.presetIndex = 1
+                self.menuState = 0
 
             # Load presets
             elif self.menuState == 5:
-                pass
+                self.AudioController.load_8ch_presets(self.presetIndex - 1)
+                self.update_play_stats()
+                self.presetIndex =1
+                self.menuState = 0
 
             # save preset
             elif self.menuState == 6:
-                pass
+                self.AudioController.presets[self.presetIndex - 1] = self.AudioController.currentChannel.get_preset()
+                self.AudioController.save_presets("presets.dat", self.AudioController.presets)
+                self.update_play_stats()
+                self.presetIndex = 1
+                self.menuState = 0
 
         # vorige
         elif btnId == 3:
@@ -321,7 +330,7 @@ class PlayPage(QtWidgets.QWidget):
                 self.menuState -= 1
 
         # play
-        if btnId == 4:
+        elif btnId == 4:
             self.AudioController.play_all()
             self.update_play_stats()
 
@@ -391,13 +400,14 @@ class PlayPage(QtWidgets.QWidget):
 
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
-        self.uiItems0[0] = "Song: " + str(self.AudioController.currentChannel.song)
-        self.uiItems0[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1) \
-                          + "/" + str(self.AudioController.channelAmount)
-        self.UIController.update_main_texts(2)
+        if self.menuState == 0:
+            self.uiItems0[0] = "Song: " + str(self.AudioController.currentChannel.song)
+            self.uiItems0[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1) \
+                              + "/" + str(self.AudioController.channelAmount)
+            self.UIController.update_main_texts(2)
 
-        self.taskbarItems0[2] = "Preset: " + str(self.AudioController.currentChannel.preset.get_id())
-        self.bottomLabel[2].setText(self.taskbarItems0[2])
+            self.taskbarItems0[2] = "Preset: " + str(self.AudioController.currentChannel.preset.get_id())
+            self.bottomLabel[2].setText(self.taskbarItems0[2])
 
         for i in range(5):
             self.eqSlider[i].setValue(self.AudioController.currentChannel.get_eq_band_amp(i))
