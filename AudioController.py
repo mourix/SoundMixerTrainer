@@ -199,7 +199,7 @@ class AudioController(object):
             if not os.getcwd().endswith("SDMap"):
                 os.chdir("SDMap")
                 os.chdir(playDir)
-                if self.DEBUG: print("a")
+                if self.DEBUG: print("dir_play: SDMap gevonden")
         except FileNotFoundError:
             os.chdir("..")
             os.chdir("..")
@@ -207,7 +207,7 @@ class AudioController(object):
                 if not os.getcwd().endswith("SDMap"):
                     os.chdir("SDMap")
                     os.chdir(playDir)
-                    if self.DEBUG: print("b")
+                    if self.DEBUG: print("dir_play: SDMap gevonden")
             except FileNotFoundError:
                 if self.DEBUG: print("dir_play: foute bestandslocatie")
 

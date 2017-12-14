@@ -14,8 +14,11 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-    uiItems = ["", "", "Sync", "Presets", "Repeat", "Back"]
-    taskbarItems = ["Time: 0:00", "Repeat: off", "Preset: -"]
+    uiItems = ["", "", "Time Options", "Presets", "Repeat", "Back"]
+    uiItems1 = ["Re sync", "Set time", "", "back"]
+    taskbarItems0 = ["Time: 0:00", "Repeat: off", "Preset: -"]
+    taskbarItems1 = ["1: Re sync", "2: Set time", ""]
+    menuState = 0
     repeat = 0
     DEBUG = True
 
@@ -24,9 +27,7 @@ class PlayPage(QtWidgets.QWidget):
         self.UIController = ui
         self.AudioController = AudioController
         self.setObjectName("playPage")
-        font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
-
-        self.allChannelState = 0        # Debug code
+        font = QtGui.QFont("Arial", 12, QtGui.QFont.Bold)
 
         # maak onderbalk lijn
         self.setObjectName("playPage")
@@ -114,7 +115,7 @@ class PlayPage(QtWidgets.QWidget):
 
         # update onderbalk
         for i in range(3):
-            self.bottomLabel[i].setText(self.taskbarItems[i])
+            self.bottomLabel[i].setText(self.taskbarItems0[i])
 
         # timer voor afspeeltijd en repeat
         self.timer = QtCore.QTimer()
@@ -136,11 +137,11 @@ class PlayPage(QtWidgets.QWidget):
 
     # update afspeeltijd en repeat
     def update_timer(self):
-
-        # update afspeeltijd
-        self.taskbarItems[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
-                               + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
-        self.bottomLabel[0].setText(self.taskbarItems[0])
+        if self.menuState == 0:
+            # update afspeeltijd
+            self.taskbarItems0[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
+                                   + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
+            self.bottomLabel[0].setText(self.taskbarItems0[0])
 
         # Repeat
         if self.AudioController.audioPlayers[0].get_playback_state() == 6 and self.repeat:
@@ -148,17 +149,26 @@ class PlayPage(QtWidgets.QWidget):
 
     # play, stop, terug
     def action_button_pushed(self, btnId):
-        # sync
+        # tijd opties
         if btnId == 0:
-            self.AudioController.sync_channels()
+            if self.menuState == 0:
+                self.menuState = 1
+                for i in range(3):
+                    self.bottomLabel[i].setText(self.taskbarItems1[i])
+                    self.UIController.pushButton[i].setText(self.uiItems1[i])
+            elif self.menuState == 1:
+                self.AudioController.sync_channels()
+                self.menuState = 0
+                for i in range(3):
+                    self.bottomLabel[i].setText(self.taskbarItems0[i])
+                    self.UIController.pushButton[i].setText(self.uiItems[i + 2])
 
-        # alle kanalen test
+        # Preset opties
         elif btnId == 1:
-            if self.allChannelState == 1:
-                self.allChannelState = 0
-            else:
-                self.allChannelState = 1
-            print(self.allChannelState)
+            if self.menuState == 0:
+                pass
+            elif self.menuState == 1:
+                pass
 
         # repeat
         elif btnId == 2:
@@ -211,22 +221,18 @@ class PlayPage(QtWidgets.QWidget):
 
     # update volume
     def volume_changed(self, sldvalue):
-        if self.allChannelState == 0:
-            self.AudioController.currentChannel.set_volume(sldvalue)
-        else:
-            for i in range(8):
-                self.AudioController.audioPlayers[i].set_volume(sldvalue)
+        self.AudioController.currentChannel.set_volume(sldvalue)
         self.volLabel.setText(str(sldvalue))
 
     # zet repeat aan of uit
     def toggle_repeat(self):
         if self.repeat == 0:
             self.repeat = 1
-            self.taskbarItems[1] = "Repeat: on"
+            self.taskbarItems0[1] = "Repeat: on"
         else:
             self.repeat = 0
-            self.taskbarItems[1] = "Repeat: off"
-        self.bottomLabel[1].setText(self.taskbarItems[1])
+            self.taskbarItems0[1] = "Repeat: off"
+        self.bottomLabel[1].setText(self.taskbarItems0[1])
 
     def rotary_rotate(self, rotId, direction):
         if rotId is not 6:
@@ -243,9 +249,9 @@ class PlayPage(QtWidgets.QWidget):
                           + "/" + str(self.AudioController.channelAmount)
         self.UIController.update_main_texts(2)
 
-        self.taskbarItems[2] = "Preset: " + str(
+        self.taskbarItems0[2] = "Preset: " + str(
             self.AudioController.currentChannel.preset.get_id())
-        self.bottomLabel[2].setText(self.taskbarItems[2])
+        self.bottomLabel[2].setText(self.taskbarItems0[2])
 
         for i in range(5):
             self.eqSlider[i].setValue(self.AudioController.currentChannel.get_eq_band_amp(i))

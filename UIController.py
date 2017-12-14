@@ -41,7 +41,7 @@ class UIController(object):
         self.centralwidget.setObjectName("centralwidget")
 
         # bovenbalk
-        font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
+        font = QtGui.QFont("Arial", 12, QtGui.QFont.Bold)
         self.topLabel = [0 for i in range(2)]
         self.topLabel[0] = QtWidgets.QLabel(self.centralwidget)
         self.topLabel[0].setGeometry(QtCore.QRect(10, 0, 340, 30))
