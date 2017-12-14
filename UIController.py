@@ -22,7 +22,7 @@ class UIController(object):
     def __init__(self, MainWindow, AudioController):
         self.AudioController = AudioController
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(480, 320)  # vergroot voor debugknoppen
+        MainWindow.resize(480, 480)  # vergroot voor debugknoppen
 
         # Zet achtergrond op zwart en text op wit
         palette = QtGui.QPalette()

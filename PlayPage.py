@@ -16,19 +16,24 @@ class PlayPage(QtWidgets.QWidget):
 
     uiItems0 = ["", "", "Time Options", "Presets", "Repeat", "Back"]
     uiItems1 = ["", "", "Re sync", "Set time", "", "Back"]
+    uiItems2 = ["", "", "-", "+", "Set", "Back"]
     uiItems = []
     uiItems.append(uiItems0)
     uiItems.append(uiItems1)
+    uiItems.append(uiItems2)
 
     taskbarItems0 = ["Time: 0:00", "Repeat: off", "Preset: -"]
     taskbarItems1 = ["1: Re sync", "2: Set time", ""]
+    taskbarItems2 = ["Time: 0:00", "set to", "time: 0:00"]
     taskbarItems = []
     taskbarItems.append(taskbarItems0)
     taskbarItems.append(taskbarItems1)
+    taskbarItems.append(taskbarItems2)
 
     menuState = 0
     repeat = 0
     DEBUG = True
+    setTime = 0
 
     def __init__(self, ui, AudioController):
         super().__init__()
@@ -145,43 +150,93 @@ class PlayPage(QtWidgets.QWidget):
 
     # update afspeeltijd en repeat
     def update_timer(self):
-        if self.menuState == 0:
+        if self.menuState == 0 or self.menuState == 2:
             # update afspeeltijd
             self.taskbarItems0[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
                                    + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
             self.bottomLabel[0].setText(self.taskbarItems0[0])
+            #if self.DEBUG: print(self.AudioController.currentChannel.get_time())
 
         # Repeat
         if self.AudioController.audioPlayers[0].get_playback_state() == 6 and self.repeat:
             self.AudioController.play_all()
 
+    def update_set_time(self, direction):
+        if direction == 1:
+            if self.setTime < self.AudioController.currentChannel.get_lenght() - 1000 or self.setTime == -1:
+                self.setTime += 1000
+
+        elif self.setTime > 1000 and direction == 0:
+            self.setTime -= 1000
+
+        self.taskbarItems2[2] = self.ms_to_time_string(self.setTime) + "/" +\
+                                self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
+        self.bottomLabel[2].setText(self.taskbarItems2[2])
+
     # play, stop, terug
     def action_button_pushed(self, btnId):
-        # tijd opties
+        close = 0
+        # Menu 1 knop
         if btnId == 0:
+            # Tijd opties
             if self.menuState == 0:
                 self.menuState = 1
+
+            # Re sync muziek
             elif self.menuState == 1:
                 self.AudioController.sync_channels()
                 self.menuState = 0
 
-            for i in range (3):
-                self.bottomLabel[i].setText(self.taskbarItems[self.menuState][i])
-                self.UIController.pushButton[i].setText(self.uiItems[self.menuState][i + 2])
-        # Preset opties
+            # zet huidge tijd lager "-"
+            elif self.menuState == 2:
+                self.update_set_time(0)
+                self.update_timer()
+
+
+        # Menu 2 knop
         elif btnId == 1:
+            # Open preset menu
             if self.menuState == 0:
                 pass
-            elif self.menuState == 1:
-                pass
 
-        # repeat
+            # Open set time menu
+            elif self.menuState == 1:
+                self.setTime = self.AudioController.currentChannel.get_time()
+                self.update_timer()
+                self.menuState = 2
+
+                self.bottomLabel[1].setText(self.taskbarItems2[1])
+                self.bottomLabel[2].setText(self.taskbarItems2[2])
+                self.taskbarItems2[2] = self.ms_to_time_string(self.setTime) + "/" + \
+                                        self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
+                self.bottomLabel[2].setText(self.taskbarItems2[2])
+
+                for i in range(3):
+                    self.UIController.pushButton[i].setText(self.uiItems[self.menuState][i + 2])
+
+            # Zet tijd hoger
+            elif self.menuState == 2:
+                self.update_set_time(1)
+
+        # Menu 3 knop
         elif btnId == 2:
-            self.toggle_repeat()
+            # Toggle repeat
+            if self.menuState == 0:
+                self.toggle_repeat()
+
+            #zet tijd
+            if self.menuState == 2:
+                self.AudioController.sync_channels(self.setTime)
+                self.update_timer()
+                self.menuState = 0
 
         # vorige
         elif btnId == 3:
-            self.UIController.previous_page()
+            if self.menuState == 0:
+                self.UIController.previous_page()
+                close = 1
+            else:
+                self.menuState -= 1
 
         # play
         if btnId == 4:
@@ -191,6 +246,11 @@ class PlayPage(QtWidgets.QWidget):
         # stop
         elif btnId == 5:
             self.AudioController.stop_all()
+
+        if close == 0 and self.menuState != 2:
+            for i in range(3):
+                self.bottomLabel[i].setText(self.taskbarItems[self.menuState][i])
+                self.UIController.pushButton[i].setText(self.uiItems[self.menuState][i + 2])
 
     # preset hardwareknoppen
     def preset_button_pushed(self, btnId):

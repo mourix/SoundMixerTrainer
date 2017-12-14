@@ -43,10 +43,16 @@ class AudioController(object):
                 self.audioPlayers[d].set_audiodevice(device[6+d])
 
     # zet alle kanalen gelijk aan kanaal 1
-    def sync_channels(self,):
-        for i in range(self.channelAmount - 1):
-            self.audioPlayers[i+1].set_time(self.audioPlayers[0].get_time())
-        if self.DEBUG: print("Synced all channels to channel 1")
+    def sync_channels(self, setTime = None):
+        if setTime == None:
+            for i in range(7):
+                self.audioPlayers[i+1].set_time(self.audioPlayers[0].get_time())
+            if self.DEBUG: print("Synced all channels to channel 1")
+        else:
+            for i in range(self.channelAmount):
+                self.audioPlayers[i].set_time(setTime)
+            if self.DEBUG:
+                print("Synced all channels to setTime")
 
     def set_channel_song(self, channel, song):
         self.audioPlayers[channel].set_media(song)
@@ -177,7 +183,7 @@ class AudioController(object):
                     files.append(filename)
 
             self.stop_all()
-            self.channelAmount = 8
+            self.channelAmount = len(files)
 
             for c in range(self.channelAmount):
                 self.set_channel_song(c, files[c])
