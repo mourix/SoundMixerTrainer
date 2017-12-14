@@ -111,9 +111,9 @@ class AudioController(object):
             if self.DEBUG: print("AudioController: presets opgeslagen")
 
     def create_presets(self, PIK):
-        eqBanden1 = [0, 0, 0, 0, 0]
         volume = 100
         preamp = 0
+        eqBanden1 = [0, 0, 0, 0, 0]
         eqBanden2 = [20, 20, 20, 20, 20]
         eqBanden3 = [-20, -20, -20, -20, -20]
         eqBanden4 = [-20, -20, 0, 20, 20]
@@ -150,13 +150,12 @@ class AudioController(object):
             banden[i] = randint(-20, 20)
 
         self.presets[5] = Preset(banden, volume, preamp, 6)
-
         self.set_channel_preset(5)
 
     def quick_play(self):
         """Quickplay
 
-        Laad alle nummers uit de QuickPlay amp in.
+        Laad alle nummers uit de QuickPlay map in.
         """
 
         if self.DEBUG: print("Quick Play initializing")
@@ -167,7 +166,7 @@ class AudioController(object):
                 if not os.getcwd().endswith("QuickPlay"):
                     os.chdir("QuickPlay")
 
-            except:
+            except FileNotFoundError:
                 os.chdir("..")
                 os.chdir("..")
                 if not os.getcwd().endswith("QuickPlay"):
@@ -184,11 +183,15 @@ class AudioController(object):
                 self.set_channel_song(c, files[c])
                 if self.DEBUG: print("Channel " + str(c+1) + ": " + files[c])
 
-        except:
+        except FileNotFoundError:
             if self.DEBUG: print("QuickPlay ERROR: Can't find path. No songs have been loaded.")
 
     # laadt de eerste 8 nummers uit een map. test code
     def dir_play(self, playDir):
+        """Dirplay
+
+        Laad alle nummers uit de gekozen map in.
+        """
         files = []
         files.clear()
 
@@ -197,7 +200,7 @@ class AudioController(object):
                 os.chdir("SDMap")
                 os.chdir(playDir)
                 if self.DEBUG: print("a")
-        except:
+        except FileNotFoundError:
             os.chdir("..")
             os.chdir("..")
             try:
@@ -205,7 +208,7 @@ class AudioController(object):
                     os.chdir("SDMap")
                     os.chdir(playDir)
                     if self.DEBUG: print("b")
-            except:
+            except FileNotFoundError:
                 if self.DEBUG: print("dir_play: foute bestandslocatie")
 
         for filename in os.listdir("."):

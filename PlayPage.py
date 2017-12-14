@@ -38,20 +38,15 @@ class PlayPage(QtWidgets.QWidget):
 
         # maak onderbalk
         self.bottomLabel = [0 for i in range(3)]
-        self.bottomLabel[0] = QtWidgets.QLabel(self)
+        for i in range(3):
+            self.bottomLabel[i] = QtWidgets.QLabel(self)
+            self.bottomLabel[i].setFont(font)
+            self.bottomLabel[i].setObjectName("bottomLabel_" + str(i))
         self.bottomLabel[0].setGeometry(QtCore.QRect(10, 220, 155, 30))
-        self.bottomLabel[0].setFont(font)
-        self.bottomLabel[0].setObjectName("bottomLabelLeft")
-        self.bottomLabel[1] = QtWidgets.QLabel(self)
         self.bottomLabel[1].setGeometry(QtCore.QRect(165, 220, 150, 30))
-        self.bottomLabel[1].setFont(font)
         self.bottomLabel[1].setAlignment(QtCore.Qt.AlignCenter)
-        self.bottomLabel[1].setObjectName("bottomLabelMiddle")
-        self.bottomLabel[2] = QtWidgets.QLabel(self)
         self.bottomLabel[2].setGeometry(QtCore.QRect(315, 220, 155, 30))
-        self.bottomLabel[2].setFont(font)
         self.bottomLabel[2].setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
-        self.bottomLabel[2].setObjectName("bottomLabelRight")
 
         # maak EQ sliders
         self.eqSlider = [0 for i in range(5)]

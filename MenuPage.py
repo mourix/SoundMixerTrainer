@@ -12,10 +12,10 @@ import os
 class MenuPage(QtWidgets.QWidget):
     """Menupagina classe.
 
-    Initialiseerd de menupagina en loopt door een array van opties heen.
+    Initialiseert de menupagina en loopt door een array van opties heen.
     """
 
-    uiItems = ("Main menu", "Choose item", "▼", "▲", "Select", "Back")
+    uiItems = ["Main menu", "Choose item", "▼", "▲", "Select", "Back"]
     menuItems = ["Quick start", "Load from SD card"]
     menuPos = 0
     DEBUG = True
@@ -25,7 +25,7 @@ class MenuPage(QtWidgets.QWidget):
         self.UIController = ui
         self.AudioController = AudioController
         self.setObjectName("menuPage")
-        self.menuState = 1      # test variabelen
+        self.menuState = 1      # testvariabelen
         font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
 
         # menu labels
@@ -80,8 +80,11 @@ class MenuPage(QtWidgets.QWidget):
                     self.AudioController.quick_play()
                     self.AudioController.set_current_channel(0)
                     self.UIController.page[2].update_play_stats()
-                else:
+                elif self.menuPos == 1:
+                    # test menu voor SD mappen
                     self.update_menu()
+                    self.uiItems[0] = "Load from SD card"
+                    self.UIController.topLabel[0].setText(self.uiItems[0])
             elif self.menuState == 2:
                 self.UIController.next_page()
                 self.AudioController.dir_play(self.menuItems[self.menuPos])
@@ -96,6 +99,8 @@ class MenuPage(QtWidgets.QWidget):
                 self.menuItems.clear()
                 self.menuItems = ["Quick start", "Load from SD card"]
                 self.set_menu_items()
+                self.uiItems[0] = "Main menu"
+                self.UIController.topLabel[0].setText(self.uiItems[0])
                 self.menuPos = 0
                 self.set_selector()
                 self.menuState = 1
@@ -133,6 +138,10 @@ class MenuPage(QtWidgets.QWidget):
             os.listdir("SDMap")
         except FileNotFoundError:
             os.chdir("..")
+            try:
+                os.listdir("SDMap")
+            except FileNotFoundError:
+                os.chdir("..")
 
         dirNames = []
         for dirs in os.listdir("SDMap"):

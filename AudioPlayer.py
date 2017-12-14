@@ -17,7 +17,7 @@ class AudioPlayer(object):
     song = ""
     DEBUG = True
 
-    def __init__(self, preset = None):
+    def __init__(self, preset=None):
         # zet speler aan
         self.instance = vlc.Instance()
         self.player = self.instance.media_player_new()
@@ -28,7 +28,7 @@ class AudioPlayer(object):
         if (vlc.libvlc_media_player_set_equalizer(self.player, self.equalizer) == 0) and (self.player is not None):
             if self.DEBUG: print("Initialized Player and EQ successfully")
 
-        if preset != None:
+        if preset is not None:
             for i in range(len(self.preset.eqBanden)):
                 self.set_eq_band_amp(self.preset.eqBanden[i], i)
                 self.set_volume(self.preset.volume)
@@ -55,16 +55,6 @@ class AudioPlayer(object):
 
     #  stel afspeelvolume in
     def set_volume(self, volume):
-        """kan weg denk ik
-        vol = volume
-        if vol > 100:
-            if self.DEBUG: print("AudioPlayer: volume out of range")
-            vol = 100
-
-        if vol < 0:
-            if self.DEBUG: print("AudioPlayer: volume out of range")
-            vol = 0
-        """
         vlc.libvlc_audio_set_volume(self.player, volume)
         if self.DEBUG: print("AudioPlayer: Volume " + str(self.get_volume()))
 
