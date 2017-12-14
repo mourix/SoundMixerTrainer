@@ -2,7 +2,7 @@
 Versie:
 Beschrijving:
 
-Auteurs: Jos van Mourik (& Matthijs Daggelders)
+Auteurs: Jos van Mourik & Matthijs Daggelders
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -14,21 +14,39 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
+    presetIndex = 1
+    # dit gedeelte laden / opslaan
     uiItems0 = ["", "", "Time Options", "Presets", "Repeat", "Back"]
     uiItems1 = ["", "", "Re sync", "Set time", "", "Back"]
     uiItems2 = ["", "", "-", "+", "Set", "Back"]
+    uiItems3 = ["", "", "Save presets", "Load presets", "Save preset", "Back"]
+    uiItems4 = ["", "", "-", "+", "Save", "Back"]
+    uiItems5 = ["", "", "-", "+", "Load", "Back"]
+    uiItems6 = ["", "", "-", "+", "Save", "Back"]
     uiItems = []
     uiItems.append(uiItems0)
     uiItems.append(uiItems1)
     uiItems.append(uiItems2)
+    uiItems.append(uiItems3)
+    uiItems.append(uiItems4)
+    uiItems.append(uiItems5)
+    uiItems.append(uiItems6)
 
     taskbarItems0 = ["Time: 0:00", "Repeat: off", "Preset: -"]
     taskbarItems1 = ["1: Re sync", "2: Set time", ""]
     taskbarItems2 = ["Time: 0:00", "set to", "time: 0:00"]
+    taskbarItems3 = ["1: Save 8ch preset", "2: Load 8ch preset", "3: Save preset"]
+    taskbarItems4 = ["Presets: " + str(presetIndex), "", ""]
+    taskbarItems5 = ["Presets: " + str(presetIndex), "", ""]
+    taskbarItems6 = ["Preset: " + str(presetIndex), "", ""]
     taskbarItems = []
     taskbarItems.append(taskbarItems0)
     taskbarItems.append(taskbarItems1)
     taskbarItems.append(taskbarItems2)
+    taskbarItems.append(taskbarItems3)
+    taskbarItems.append(taskbarItems4)
+    taskbarItems.append(taskbarItems5)
+    taskbarItems.append(taskbarItems6)
 
     menuState = 0
     repeat = 0
@@ -192,12 +210,33 @@ class PlayPage(QtWidgets.QWidget):
                 self.update_set_time(0)
                 self.update_timer()
 
+            # ga naar save presets menu
+            elif self.menuState == 3:
+                self.menuState = 4
+
+            # Ga een presets lager
+            elif self.menuState == 4:
+                if self.presetIndex > 1:
+                    self.presetIndex -= 1
+                self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
+
+            # Ga een presets lager
+            elif self.menuState == 5:
+                if self.presetIndex > 1:
+                    self.presetIndex -= 1
+                self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
+
+            # Ga een presets lager
+            elif self.menuState == 6:
+                if self.presetIndex > 1:
+                    self.presetIndex -= 1
+                self.taskbarItems[self.menuState] = ["Preset: " + str(self.presetIndex), "", ""]
 
         # Menu 2 knop
         elif btnId == 1:
             # Open preset menu
             if self.menuState == 0:
-                pass
+                self.menuState = 3
 
             # Open set time menu
             elif self.menuState == 1:
@@ -218,6 +257,28 @@ class PlayPage(QtWidgets.QWidget):
             elif self.menuState == 2:
                 self.update_set_time(1)
 
+            # ga naar load presets menu
+            elif self.menuState == 3:
+                self.menuState = 5
+
+            # Ga een presets hoger
+            elif self.menuState == 4:
+                if self.presetIndex < 10:
+                    self.presetIndex += 1
+                self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
+
+            # Ga een presets hoger
+            elif self.menuState == 5:
+                if self.presetIndex < 10:
+                    self.presetIndex += 1
+                self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
+
+            # Ga een presets hoger
+            elif self.menuState == 6:
+                if self.presetIndex < 5:
+                    self.presetIndex += 1
+                self.taskbarItems[self.menuState] = ["Preset: " + str(self.presetIndex), "", ""]
+
         # Menu 3 knop
         elif btnId == 2:
             # Toggle repeat
@@ -230,11 +291,32 @@ class PlayPage(QtWidgets.QWidget):
                 self.update_timer()
                 self.menuState = 0
 
+            # ga naar save preset menu
+            elif self.menuState == 3:
+                self.menuState = 6
+
+            # Save presets
+            elif self.menuState == 4:
+                pass
+
+            # Load presets
+            elif self.menuState == 5:
+                pass
+
+            # save preset
+            elif self.menuState == 6:
+                pass
+
         # vorige
         elif btnId == 3:
             if self.menuState == 0:
                 self.UIController.previous_page()
+                self.AudioController.stop_all()
                 close = 1
+            elif self.menuState == 3:
+                self.menuState = 0
+            elif self.menuState == 5 or self.menuState == 6:
+                self.menuState = 3
             else:
                 self.menuState -= 1
 
