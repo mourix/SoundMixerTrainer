@@ -45,7 +45,7 @@ class AudioController(object):
     # zet alle kanalen gelijk aan kanaal 1
     def sync_channels(self, setTime = None):
         if setTime == None:
-            for i in range(7):
+            for i in range(self.channelAmount - 1):
                 self.audioPlayers[i+1].set_time(self.audioPlayers[0].get_time())
             if self.DEBUG: print("Synced all channels to channel 1")
         else:
