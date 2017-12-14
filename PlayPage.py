@@ -14,10 +14,18 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-    uiItems = ["", "", "Time Options", "Presets", "Repeat", "Back"]
-    uiItems1 = ["Re sync", "Set time", "", "back"]
+    uiItems0 = ["", "", "Time Options", "Presets", "Repeat", "Back"]
+    uiItems1 = ["", "", "Re sync", "Set time", "", "Back"]
+    uiItems = []
+    uiItems.append(uiItems0)
+    uiItems.append(uiItems1)
+
     taskbarItems0 = ["Time: 0:00", "Repeat: off", "Preset: -"]
     taskbarItems1 = ["1: Re sync", "2: Set time", ""]
+    taskbarItems = []
+    taskbarItems.append(taskbarItems0)
+    taskbarItems.append(taskbarItems1)
+
     menuState = 0
     repeat = 0
     DEBUG = True
@@ -153,16 +161,13 @@ class PlayPage(QtWidgets.QWidget):
         if btnId == 0:
             if self.menuState == 0:
                 self.menuState = 1
-                for i in range(3):
-                    self.bottomLabel[i].setText(self.taskbarItems1[i])
-                    self.UIController.pushButton[i].setText(self.uiItems1[i])
             elif self.menuState == 1:
                 self.AudioController.sync_channels()
                 self.menuState = 0
-                for i in range(3):
-                    self.bottomLabel[i].setText(self.taskbarItems0[i])
-                    self.UIController.pushButton[i].setText(self.uiItems[i + 2])
 
+            for i in range (3):
+                self.bottomLabel[i].setText(self.taskbarItems[self.menuState][i])
+                self.UIController.pushButton[i].setText(self.uiItems[self.menuState][i + 2])
         # Preset opties
         elif btnId == 1:
             if self.menuState == 0:
@@ -244,13 +249,12 @@ class PlayPage(QtWidgets.QWidget):
 
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
-        self.uiItems[0] = "Song: " + str(self.AudioController.currentChannel.song)
-        self.uiItems[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1) \
+        self.uiItems0[0] = "Song: " + str(self.AudioController.currentChannel.song)
+        self.uiItems0[1] = "Channel: " + str(self.AudioController.get_current_channel() + 1) \
                           + "/" + str(self.AudioController.channelAmount)
         self.UIController.update_main_texts(2)
 
-        self.taskbarItems0[2] = "Preset: " + str(
-            self.AudioController.currentChannel.preset.get_id())
+        self.taskbarItems0[2] = "Preset: " + str(self.AudioController.currentChannel.preset.get_id())
         self.bottomLabel[2].setText(self.taskbarItems0[2])
 
         for i in range(5):

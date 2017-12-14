@@ -152,9 +152,9 @@ class UIController(object):
     # update de bovenbalk en knoppen op basis van de array in de subclasse
     def update_main_texts(self, id):
         for i in range(2):
-            self.topLabel[i].setText(self.page[id].uiItems[i])
+            self.topLabel[i].setText(self.page[id].uiItems0[i])
         for i in range(4):
-            self.pushButton[i].setText(self.page[id].uiItems[i + 2])
+            self.pushButton[i].setText(self.page[id].uiItems0[i + 2])
 
     def button_pressed(self, id, port, btnId):
         if id == 0:
