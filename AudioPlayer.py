@@ -36,6 +36,7 @@ class AudioPlayer(object):
     # zet nummer in speler
     def set_media(self, s):
         self.song = s
+        self.player.set_media(self.instance.media_new(s))
 
     # speel nummer
     def play_song(self):
@@ -47,7 +48,16 @@ class AudioPlayer(object):
         if self.get_playback_state() == 3:
             self.player.pause()
             self.set_time(0)
+            print("time set")
+
+        elif self.get_playback_state() == 4:
+            self.set_time(0)
+            print("time set")
         # self.player.stop() # werkt niet met pi sound devices
+
+    def pause_song(self):
+        if self.get_playback_state() == 3:
+            self.player.pause()
 
     # lees afspeelvolume uit
     def get_volume(self):
@@ -203,3 +213,6 @@ class AudioPlayer(object):
     # vraag de mutestatus op
     def get_mute(self):
         return vlc.libvlc_audio_get_mute(self.player)
+
+    def toggle_pause(self):
+        vlc.libvlc_media_player_pause(self.player)

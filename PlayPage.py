@@ -260,10 +260,12 @@ class PlayPage(QtWidgets.QWidget):
             # ga naar load presets menu
             elif self.menuState == 3:
                 self.menuState = 5
+                self.presetIndex = 1
+                self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
 
             # Ga een presets hoger
             elif self.menuState == 4:
-                if self.presetIndex <= len(self.AudioController.multiChannelPresets):
+                if self.presetIndex < len(self.AudioController.multiChannelPresets):
                     self.presetIndex += 1
                 self.taskbarItems[self.menuState] = ["Presets: " + str(self.presetIndex), "", ""]
 
@@ -299,13 +301,15 @@ class PlayPage(QtWidgets.QWidget):
             elif self.menuState == 4:
                 self.AudioController.save_8ch_presets(self.presetIndex - 1)
                 self.presetIndex = 1
+                self.update_play_stats()
                 self.menuState = 0
 
             # Load presets
             elif self.menuState == 5:
+                print(self.presetIndex)
                 self.AudioController.load_8ch_presets(self.presetIndex - 1)
+                self.presetIndex = 1
                 self.update_play_stats()
-                self.presetIndex =1
                 self.menuState = 0
 
             # save preset
@@ -331,7 +335,7 @@ class PlayPage(QtWidgets.QWidget):
 
         # play
         elif btnId == 4:
-            self.AudioController.play_all()
+            self.AudioController.toggle_pause_all()
             self.update_play_stats()
 
         # stop
@@ -408,6 +412,7 @@ class PlayPage(QtWidgets.QWidget):
 
             self.taskbarItems0[2] = "Preset: " + str(self.AudioController.currentChannel.preset.get_id())
             self.bottomLabel[2].setText(self.taskbarItems0[2])
+            self.update_timer()
 
         for i in range(5):
             self.eqSlider[i].setValue(self.AudioController.currentChannel.get_eq_band_amp(i))

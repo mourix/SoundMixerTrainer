@@ -9,7 +9,7 @@ from AudioPlayer import *
 import pickle
 from Preset import Preset
 from random import randint
-
+from time import sleep
 
 class AudioController(object):
     """Audio controller classe.
@@ -19,6 +19,8 @@ class AudioController(object):
     PIK = "presets.dat"
     PIK2 = "8chpreset.dat"
     ROOT = "C:/Users/M/Documents/GitHub/SoundMixerTrainer"
+    QUICK = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/QuickPlay"
+    SD = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/SDMap"
     DEBUG = True
 
     def __init__(self):
@@ -71,6 +73,16 @@ class AudioController(object):
             self.audioPlayers[c].stop_song()
         if self.DEBUG: print("Stopping all")
 
+    def pause_all(self):
+        for c in range(self.channelAmount):
+            self.audioPlayers[c].pause_song()
+        if self.DEBUG: print("pausing all")
+
+    def toggle_pause_all(self):
+        for c in range(self.channelAmount):
+            self.audioPlayers[c].toggle_pause()
+        if self.DEBUG: print("pause")
+
     def prev_channel(self):
         if self.currentChannelIndex < (self.channelAmount-1):
             self.currentChannelIndex += 1
@@ -118,12 +130,21 @@ class AudioController(object):
                 return self.create_8ch_presets(PIK)
 
     def save_presets(self, PIK, presets):
+        prevPath = 0
+        if os.getcwd() == self.QUICK:
+            prevPath = os.getcwd()
+        elif os.getcwd() != self.ROOT:
+            prevPath = os.getcwd()
+
         # aanpassen aan de dir die gevolgd moet worden
         os.chdir(self.ROOT)
 
         with open(PIK, "wb") as f:
             pickle.dump(presets, f)
             if self.DEBUG: print("AudioController: presets opgeslagen")
+
+        if prevPath != 0:
+            os.chdir(prevPath)
 
     def create_presets(self, PIK):
         volume = 100
@@ -211,8 +232,7 @@ class AudioController(object):
                     os.chdir("QuickPlay")
 
             except FileNotFoundError:
-                os.chdir("..")
-                os.chdir("..")
+                os.chdir(self.QUICK)
                 if not os.getcwd().endswith("QuickPlay"):
                     os.chdir("QuickPlay")
 
@@ -226,6 +246,8 @@ class AudioController(object):
             for c in range(self.channelAmount):
                 self.set_channel_song(c, files[c])
                 if self.DEBUG: print("Channel " + str(c+1) + ": " + files[c])
+
+            self.play_all()
 
         except FileNotFoundError:
             if self.DEBUG: print("QuickPlay ERROR: Can't find path. No songs have been loaded.")
@@ -245,11 +267,9 @@ class AudioController(object):
                 os.chdir(playDir)
                 if self.DEBUG: print("dir_play: SDMap gevonden")
         except FileNotFoundError:
-            os.chdir("..")
-            os.chdir("..")
             try:
                 if not os.getcwd().endswith("SDMap"):
-                    os.chdir("SDMap")
+                    os.chdir(self.SD)
                     os.chdir(playDir)
                     if self.DEBUG: print("dir_play: SDMap gevonden")
             except FileNotFoundError:
@@ -268,6 +288,9 @@ class AudioController(object):
                 if self.DEBUG: print("Channel " + str(c+1) + ": " + files[c])
             except:
                 if self.DEBUG: print("dir_play: fout in het laden van de bestanden")
+
+        self.play_all()
+
 
     def play_last(self, audioPlayersLast):
         pass
