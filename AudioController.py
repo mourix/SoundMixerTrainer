@@ -59,6 +59,8 @@ class AudioController(object):
             if self.DEBUG:
                 print("Synced all channels to setTime")
 
+
+
     def set_channel_song(self, channel, song):
         self.audioPlayers[channel].set_media(song)
 

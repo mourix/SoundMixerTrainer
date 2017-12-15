@@ -58,7 +58,7 @@ class PlayPage(QtWidgets.QWidget):
         self.UIController = ui
         self.AudioController = AudioController
         self.setObjectName("playPage")
-        font = QtGui.QFont("Arial", 12, QtGui.QFont.Bold)
+        font = QtGui.QFont("Arial", 14, QtGui.QFont.Bold)
 
         # maak onderbalk lijn
         self.setObjectName("playPage")
@@ -102,7 +102,7 @@ class PlayPage(QtWidgets.QWidget):
         self.volSlider.setObjectName("volSlider")
         self.volSlider.valueChanged.connect(lambda: self.volume_changed(self.volSlider.value()))
 
-        font = QtGui.QFont("Arial", 12)
+        font = QtGui.QFont("Arial", 14)
 
         # maak slider labels boven
         self.eqAmpLabel = [0 for i in range(5)]
