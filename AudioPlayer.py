@@ -48,11 +48,11 @@ class AudioPlayer(object):
         if self.get_playback_state() == 3:
             self.player.pause()
             self.set_time(0)
-            print("time set")
+            print("Song time set to 0")
 
         elif self.get_playback_state() == 4:
             self.set_time(0)
-            print("time set")
+            print("Song time set to 0")
         # self.player.stop() # werkt niet met pi sound devices
 
     def pause_song(self):

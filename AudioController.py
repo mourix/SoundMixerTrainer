@@ -9,7 +9,7 @@ from AudioPlayer import *
 import pickle
 from Preset import Preset
 from random import randint
-from time import sleep
+
 
 class AudioController(object):
     """Audio controller classe.
@@ -18,9 +18,9 @@ class AudioController(object):
     """
     PIK = "presets.dat"
     PIK2 = "8chpreset.dat"
-    ROOT = "C:/Users/M/Documents/GitHub/SoundMixerTrainer"
-    QUICK = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/QuickPlay"
-    SD = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/SDMap"
+    ROOT = "D:\Docs\Documenten\GitHub\SoundMixerTrainer"
+    QUICK = "D:\Docs\Documenten\GitHub\SoundMixerTrainer\QuickPlay"
+    SD = "D:\Docs\Documenten\GitHub\SoundMixerTrainer\SDMap"
     DEBUG = True
 
     def __init__(self):
@@ -48,18 +48,15 @@ class AudioController(object):
                 self.audioPlayers[d].set_audiodevice(device[6+d])
 
     # zet alle kanalen gelijk aan kanaal 1
-    def sync_channels(self, setTime = None):
-        if setTime == None:
-            for i in range(self.channelAmount - 1):
-                self.audioPlayers[i+1].set_time(self.audioPlayers[0].get_time())
-            if self.DEBUG: print("Synced all channels to channel 1")
-        else:
-            for i in range(self.channelAmount):
-                self.audioPlayers[i].set_time(setTime)
-            if self.DEBUG:
-                print("Synced all channels to setTime")
+    def sync_channels(self, setTime=None):
+        if setTime is not None:
+            self.audioPlayers[0].set_time(setTime)
+            if self.DEBUG: print("Set time for channel 1")
 
-
+        for i in range(self.channelAmount - 1):
+            self.audioPlayers[i + 1].set_time(self.audioPlayers[0].get_time())
+            if self.DEBUG: print("Synced channel " + str(i + 2) + " to channel 1")
+        if self.DEBUG: print("Synced all channels to channel 1")
 
     def set_channel_song(self, channel, song):
         self.audioPlayers[channel].set_media(song)
@@ -292,7 +289,6 @@ class AudioController(object):
                 if self.DEBUG: print("dir_play: fout in het laden van de bestanden")
 
         self.play_all()
-
 
     def play_last(self, audioPlayersLast):
         pass

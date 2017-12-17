@@ -50,7 +50,7 @@ def setup_input_controllers(ui):
 
 # DEBUG: open Quickplay
 def debug_quickplay():
-    for i in range(ui.stackedWidget.currentIndex()):
+    while ui.stackedWidget.currentIndex() != 0:  # introscherm
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(3)
 
     for j in range(2):
@@ -78,6 +78,8 @@ def debug_folders():
             QtTest.QTest.qWait(200)
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
         QtTest.QTest.qWait(200)
+        if ui.stackedWidget.currentIndex() == 2 and not os.getcwd().endswith("QuickPlay"):
+            print("Debug: folder succesfully opened")
         debug_all_playback_options()
 
 
