@@ -14,7 +14,7 @@ class IntroPage(QtWidgets.QWidget):
     Initialiseerd de titelpagina en gaat door als er geklikt wordt.
     """
 
-    uiItems = ("", "", "", "", "", "")
+    uiItems0 = ("", "", "", "", "", "")
     DEBUG = True
 
     def __init__(self, ui):
@@ -45,6 +45,9 @@ class IntroPage(QtWidgets.QWidget):
         self.UIController.next_page()
 
     def channel_button_pushed(self, btnId):
+        self.UIController.next_page()
+
+    def rotary_button_pushed(self, btnId):
         self.UIController.next_page()
 
     def rotary_rotate(self, RotId, direction):

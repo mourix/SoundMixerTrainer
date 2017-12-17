@@ -5,6 +5,7 @@ Beschrijving:
 Auteurs: Jos van Mourik & Matthijs Daggelders
 """
 
+from PyQt5 import QtTest
 import os
 from UIController import *
 from AudioController import AudioController
@@ -47,6 +48,52 @@ def setup_input_controllers(ui):
     rotaryencoders.append(RotaryEncoder(6, 25, 5, ui))
 
 
+# DEBUG: open Quickplay
+def debug_quickplay():
+    for i in range(ui.stackedWidget.currentIndex()):
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(3)
+
+    for j in range(2):
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
+        QtTest.QTest.qWait(300)
+        if ui.stackedWidget.currentIndex() == 2 and os.getcwd().endswith("QuickPlay"):
+            print("Debug: QuickPlay succesfully opened")
+    debug_all_playback_options()
+
+
+# DEBUG: open alle folders
+def debug_folders():
+    for folders in range(3):
+        while ui.stackedWidget.currentIndex() != 0:# introscherm
+            ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(3)
+            QtTest.QTest.qWait(200)
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)  # menuscherm
+        QtTest.QTest.qWait(200)
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(1)  # pijl omlaag
+        QtTest.QTest.qWait(200)
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)  # folder menu
+        QtTest.QTest.qWait(200)
+        for steps in range(folders):  # scroll door alle mappen
+            ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(0)
+            QtTest.QTest.qWait(200)
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
+        QtTest.QTest.qWait(200)
+        debug_all_playback_options()
+
+
+# open alle kanalen, pas alle presets toe, reset alle presets
+def debug_all_playback_options():
+    for i in range(8):
+        ui.page[2].channel_button_pushed(i)
+        for j in range(6):
+            ui.page[2].preset_button_pushed(j)
+            QtTest.QTest.qWait(200)
+        for k in range(6):
+            ui.page[2].rotary_button_pushed(k)
+            QtTest.QTest.qWait(50)
+        ui.page[2].rotary_button_pushed(5)
+
+
 if __name__ == "__main__":
     import sys
     aController = AudioController()
@@ -54,13 +101,15 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = UIController(MainWindow, aController)
 
-    #setup_input_controllers(ui)
-
     # fullscreen op Raspberry Pi (linux)
     if os.name == "posix":
         MainWindow.showFullScreen()
+        setup_input_controllers(ui)
     else:
         MainWindow.show()
+
+    debug_quickplay()
+    debug_folders()
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
     sys.exit(app.exec_())

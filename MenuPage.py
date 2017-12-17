@@ -75,16 +75,18 @@ class MenuPage(QtWidgets.QWidget):
         # volgende/play
         elif btnId == 2 or btnId == 4:
             if self.menuState == 1:
+                # Quick Play
                 if self.menuPos == 0:
                     self.UIController.next_page()
                     self.AudioController.quick_play()
                     self.AudioController.set_current_channel(0)
                     self.UIController.page[2].update_play_stats()
+                # menu voor SD mappen
                 elif self.menuPos == 1:
-                    # test menu voor SD mappen
                     self.update_menu()
                     self.uiItems0[0] = "Load from SD card"
                     self.UIController.topLabel[0].setText(self.uiItems0[0])
+            # speel gekozen SD mapp
             elif self.menuState == 2:
                 self.UIController.next_page()
                 self.AudioController.dir_play(self.menuItems[self.menuPos])

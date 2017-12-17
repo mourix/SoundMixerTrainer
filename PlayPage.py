@@ -16,7 +16,7 @@ class PlayPage(QtWidgets.QWidget):
 
     presetIndex = 1
     # dit gedeelte laden / opslaan
-    uiItems0 = ["", "", "Time Options", "Presets", "Repeat", "Back"]
+    uiItems0 = ["", "", "Time", "Presets", "Repeat", "Back"]
     uiItems1 = ["", "", "Re sync", "Set time", "", "Back"]
     uiItems2 = ["", "", "-", "+", "Set", "Back"]
     uiItems3 = ["", "", "Save presets", "Load presets", "Save preset", "Back"]
@@ -102,7 +102,7 @@ class PlayPage(QtWidgets.QWidget):
         self.volSlider.setObjectName("volSlider")
         self.volSlider.valueChanged.connect(lambda: self.volume_changed(self.volSlider.value()))
 
-        font = QtGui.QFont("Arial", 14)
+        font = QtGui.QFont("Arial", 12)
 
         # maak slider labels boven
         self.eqAmpLabel = [0 for i in range(5)]
