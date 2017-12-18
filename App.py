@@ -4,7 +4,7 @@ Beschrijving:
 
 Auteurs: Jos van Mourik & Matthijs Daggelders
 """
-
+from random import randint
 from PyQt5 import QtTest
 import os
 from UIController import *
@@ -60,7 +60,6 @@ def debug_quickplay():
             print("DEBUG: QUICKPLAY PASS")
         else:
             print("DEBUG: ERROR OPENING QUICKPLAY")
-    debug_all_playback_options()
 
 
 # DEBUG: open alle folders
@@ -84,12 +83,10 @@ def debug_folders():
             print("DEBUG: FOLDER " + os.getcwd()  + " PASS")
         else:
             print("DEBUG: ERROR OPENING FOLDER")
-        debug_all_playback_options()
 
 
-# open alle kanalen, pas alle presets toe, reset alle presets
+# DEBUG: open alle kanalen, pas alle presets toe, reset alle presets
 def debug_all_playback_options():
-
     for i in range(8):  # kanalen
         ui.page[2].channel_button_pushed(i)
         print("DEBUG: SETTING CHANNEL " + str(i+1))
@@ -123,7 +120,7 @@ def debug_all_playback_options():
             print("DEBUG: ERROR PLAYING, STOPPING, STOPPING")
 
         print("DEBUG: SYNC TEST")
-        for m in range(6):
+        for i in range(6):  # open time menu en druk driemaal op sync
             ui.page[2].action_button_pushed(0)
             QtTest.QTest.qWait(100)
         if aController.audioPlayers[0].get_playback_state() == 3:
@@ -131,7 +128,38 @@ def debug_all_playback_options():
         else:
             print("DEBUG: ERROR SYNC FAILED")
 
+        print("DEBUG: PRESET TEST")
+        for i in range(3):
+            ui.page[2].action_button_pushed(1)
+            QtTest.QTest.qWait(100)
+            ui.page[2].action_button_pushed(i)
+            QtTest.QTest.qWait(100)
+            ui.page[2].action_button_pushed(2)
+            QtTest.QTest.qWait(100)
+
+        print("DEBUG: REPEAT TEST")
+        for i in range(6):
+            ui.page[2].action_button_pushed(2)
+            QtTest.QTest.qWait(100)
+
     QtTest.QTest.qWait(2000)
+
+
+# DEBUG: druk op willekeurige toetsen
+def debug_random_input(times):
+    print("DEBUG RANDOM FOR " + str(times) + " TIMES")
+    for i in range(times):
+        fId = randint(0, 4)
+        if fId == 0:
+            ui.page[2].action_button_pushed(randint(0,6))
+        elif fId == 1:
+            ui.page[2].channel_button_pushed(randint(0,7))
+        elif fId == 2:
+            ui.page[2].preset_button_pushed(randint(0,5))
+        elif fId == 3:
+            ui.page[2].rotary_button_pushed(randint(0,5))
+        QtTest.QTest.qWait(100)
+    print("DEBUG RANDOM: FINISHED")
 
 
 if __name__ == "__main__":
@@ -150,6 +178,8 @@ if __name__ == "__main__":
 
     #debug_quickplay()
     #debug_folders()
+    #debug_random_input(100)
+    #debug_all_playback_options()
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
     sys.exit(app.exec_())
