@@ -57,7 +57,7 @@ def debug_quickplay():
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
         QtTest.QTest.qWait(300)
         if ui.stackedWidget.currentIndex() == 2 and os.getcwd().endswith("QuickPlay") and aController.audioPlayers[0].get_playback_state() == 3:
-            print("DEBUG: QUICKPLAY SUCCESSFULLY OPENED")
+            print("DEBUG: QUICKPLAY PASS")
         else:
             print("DEBUG: ERROR OPENING QUICKPLAY")
     debug_all_playback_options()
@@ -81,7 +81,7 @@ def debug_folders():
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4) # press play
         QtTest.QTest.qWait(200)
         if ui.stackedWidget.currentIndex() == 2 and not os.getcwd().endswith("QuickPlay") and aController.audioPlayers[0].get_playback_state() == 3:
-            print("DEBUG: FOLDER " + os.getcwd()  + " SUCCESSFULLY OPENED")
+            print("DEBUG: FOLDER " + os.getcwd()  + " PASS")
         else:
             print("DEBUG: ERROR OPENING FOLDER")
         debug_all_playback_options()
@@ -92,9 +92,9 @@ def debug_all_playback_options():
 
     for i in range(8):  # kanalen
         ui.page[2].channel_button_pushed(i)
-        print("DEBUG: SETTINGCHANNEL " + str(i+1))
+        print("DEBUG: SETTING CHANNEL " + str(i+1))
         if aController.currentChannelIndex == i:
-            print("DEBUG: CHANNEL" + str(i+1) + " SET")
+            print("DEBUG: CHANNEL" + str(i+1) + " SET PASS")
         elif aController.currentChannelIndex != i and i < (aController.channelAmount-1):
             print("DEBUG: ERROR SETTING CHANNEL" + str(i+1))
 
@@ -107,7 +107,8 @@ def debug_all_playback_options():
             QtTest.QTest.qWait(50)
         ui.page[2].rotary_button_pushed(5)
 
-        for l in range(2):
+        print("DEBUG: PLAYING, STOPPING, STOPPING PASS TESTING")
+        for l in range(2):  # test afspelen, pauzeren en stoppen
             ui.page[2].action_button_pushed(4) # play
             QtTest.QTest.qWait(100)
             ui.page[2].action_button_pushed(4) # play
@@ -116,6 +117,19 @@ def debug_all_playback_options():
             QtTest.QTest.qWait(100)
             ui.page[2].action_button_pushed(4) # play
             QtTest.QTest.qWait(100)
+        if aController.audioPlayers[0].get_playback_state() == 3:
+            print("DEBUG: PLAYING, STOPPING, STOPPING PASS")
+        else:
+            print("DEBUG: ERROR PLAYING, STOPPING, STOPPING")
+
+        print("DEBUG: SYNC TEST")
+        for m in range(6):
+            ui.page[2].action_button_pushed(0)
+            QtTest.QTest.qWait(100)
+        if aController.audioPlayers[0].get_playback_state() == 3:
+            print("DEBUG: SYNC PASS")
+        else:
+            print("DEBUG: ERROR SYNC FAILED")
 
     QtTest.QTest.qWait(2000)
 
@@ -134,7 +148,7 @@ if __name__ == "__main__":
     else:
         MainWindow.show()
 
-    debug_quickplay()
+    #debug_quickplay()
     #debug_folders()
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
