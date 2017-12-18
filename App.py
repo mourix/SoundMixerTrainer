@@ -56,8 +56,10 @@ def debug_quickplay():
     for j in range(2):
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
         QtTest.QTest.qWait(300)
-        if ui.stackedWidget.currentIndex() == 2 and os.getcwd().endswith("QuickPlay"):
-            print("Debug: QuickPlay succesfully opened")
+        if ui.stackedWidget.currentIndex() == 2 and os.getcwd().endswith("QuickPlay") and aController.audioPlayers[0].get_playback_state() == 3:
+            print("DEBUG: QUICKPLAY SUCCESSFULLY OPENED")
+        else:
+            print("DEBUG: ERROR OPENING QUICKPLAY")
     debug_all_playback_options()
 
 
@@ -76,24 +78,46 @@ def debug_folders():
         for steps in range(folders):  # scroll door alle mappen
             ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(0)
             QtTest.QTest.qWait(200)
-        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
+        ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4) # press play
         QtTest.QTest.qWait(200)
-        if ui.stackedWidget.currentIndex() == 2 and not os.getcwd().endswith("QuickPlay"):
-            print("Debug: folder succesfully opened")
+        if ui.stackedWidget.currentIndex() == 2 and not os.getcwd().endswith("QuickPlay") and aController.audioPlayers[0].get_playback_state() == 3:
+            print("DEBUG: FOLDER " + os.getcwd()  + " SUCCESSFULLY OPENED")
+        else:
+            print("DEBUG: ERROR OPENING FOLDER")
         debug_all_playback_options()
 
 
 # open alle kanalen, pas alle presets toe, reset alle presets
 def debug_all_playback_options():
-    for i in range(8):
+
+    for i in range(8):  # kanalen
         ui.page[2].channel_button_pushed(i)
-        for j in range(6):
+        print("DEBUG: SETTINGCHANNEL " + str(i+1))
+        if aController.currentChannelIndex == i:
+            print("DEBUG: CHANNEL" + str(i+1) + " SET")
+        elif aController.currentChannelIndex != i and i < (aController.channelAmount-1):
+            print("DEBUG: ERROR SETTING CHANNEL" + str(i+1))
+
+        for j in range(6):  # presets
             ui.page[2].preset_button_pushed(j)
-            QtTest.QTest.qWait(200)
-        for k in range(6):
+            QtTest.QTest.qWait(100)
+
+        for k in range(6):  # EQ
             ui.page[2].rotary_button_pushed(k)
             QtTest.QTest.qWait(50)
         ui.page[2].rotary_button_pushed(5)
+
+        for l in range(2):
+            ui.page[2].action_button_pushed(4) # play
+            QtTest.QTest.qWait(100)
+            ui.page[2].action_button_pushed(4) # play
+            QtTest.QTest.qWait(100)
+            ui.page[2].action_button_pushed(4)  # stop
+            QtTest.QTest.qWait(100)
+            ui.page[2].action_button_pushed(4) # play
+            QtTest.QTest.qWait(100)
+
+    QtTest.QTest.qWait(2000)
 
 
 if __name__ == "__main__":
@@ -111,7 +135,7 @@ if __name__ == "__main__":
         MainWindow.show()
 
     debug_quickplay()
-    debug_folders()
+    #debug_folders()
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
     sys.exit(app.exec_())

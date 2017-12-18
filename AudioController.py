@@ -18,9 +18,9 @@ class AudioController(object):
     """
     PIK = "presets.dat"
     PIK2 = "8chpreset.dat"
-    ROOT = "D:\Docs\Documenten\GitHub\SoundMixerTrainer"
-    QUICK = "D:\Docs\Documenten\GitHub\SoundMixerTrainer\QuickPlay"
-    SD = "D:\Docs\Documenten\GitHub\SoundMixerTrainer\SDMap"
+    ROOT = "C:\SoundMixerTrainer"
+    QUICK = "C:\SoundMixerTrainer\QuickPlay"
+    SD = "C:\SoundMixerTrainer\SDMap"
     DEBUG = True
 
     def __init__(self):
@@ -72,15 +72,10 @@ class AudioController(object):
             self.audioPlayers[c].stop_song()
         if self.DEBUG: print("Stopping all")
 
-    def pause_all(self):
-        for c in range(self.channelAmount):
-            self.audioPlayers[c].pause_song()
-        if self.DEBUG: print("pausing all")
-
     def toggle_pause_all(self):
         for c in range(self.channelAmount):
             self.audioPlayers[c].toggle_pause()
-        if self.DEBUG: print("pause")
+        if self.DEBUG: print("Play/Pause")
 
     def prev_channel(self):
         if self.currentChannelIndex < (self.channelAmount-1):
@@ -166,7 +161,6 @@ class AudioController(object):
         if self.DEBUG: print("Presets zijn aangemaakt")
         self.save_presets(PIK, presets)
         return presets
-
 
     def create_8ch_presets(self, PIK):
         multiChannelPreset = []

@@ -19,7 +19,7 @@ class AudioPlayer(object):
 
     def __init__(self, preset=None):
         # zet speler aan
-        self.instance = vlc.Instance()
+        self.instance = vlc.Instance("--file-caching=1000")
         self.player = self.instance.media_player_new()
         self.preset = preset
 
@@ -54,10 +54,6 @@ class AudioPlayer(object):
             self.set_time(0)
             print("Song time set to 0")
         # self.player.stop() # werkt niet met pi sound devices
-
-    def pause_song(self):
-        if self.get_playback_state() == 3:
-            self.player.pause()
 
     # lees afspeelvolume uit
     def get_volume(self):
@@ -162,6 +158,7 @@ class AudioPlayer(object):
         if self.DEBUG: print("EQ " + str(vlc.libvlc_audio_equalizer_get_band_frequency(band))
               + " Hz " + str(self.get_eq_band_amp(band)) + "dB")
 
+    #  VLC status: IDLE/CLOSE=0, OPENING=1, PLAYING=3, PAUSED=4, STOPPING=5, ENDED=6, ERROR=7
     def get_playback_state(self):
         return vlc.libvlc_media_player_get_state(self.player)
 
