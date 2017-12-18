@@ -9,7 +9,7 @@ from AudioPlayer import *
 import pickle
 from Preset import Preset
 from random import randint
-
+from PyQt5 import QtTest
 
 class AudioController(object):
     """Audio controller classe.
@@ -65,6 +65,7 @@ class AudioController(object):
         for c in range(self.channelAmount):
             self.audioPlayers[c].play_song()
         if self.DEBUG: print("Playing all")
+        QtTest.QTest.qWait(200)
         self.sync_channels()
 
     def stop_all(self):

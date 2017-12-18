@@ -19,7 +19,7 @@ class AudioPlayer(object):
 
     def __init__(self, preset=None):
         # zet speler aan
-        self.instance = vlc.Instance("--file-caching=1000")
+        self.instance = vlc.Instance("--file-caching=500")
         self.player = self.instance.media_player_new()
         self.preset = preset
 
