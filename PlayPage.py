@@ -17,9 +17,9 @@ class PlayPage(QtWidgets.QWidget):
     presetIndex = 1
     # dit gedeelte laden / opslaan
     uiItems0 = ["", "", "Time", "Presets", "Repeat", "Back"]
-    uiItems1 = ["", "", "Re sync", "Set time", "", "Back"]
+    uiItems1 = ["", "", "Resync", "Set time", "", "Back"]
     uiItems2 = ["", "", "-", "+", "Set", "Back"]
-    uiItems3 = ["", "", "Save presets", "Load presets", "Save preset", "Back"]
+    uiItems3 = ["", "", "Save 8CH", "Load 8CH", "Save 1CH", "Back"]
     uiItems4 = ["", "", "-", "+", "Save", "Back"]
     uiItems5 = ["", "", "-", "+", "Load", "Back"]
     uiItems6 = ["", "", "-", "+", "Save", "Back"]
@@ -33,9 +33,9 @@ class PlayPage(QtWidgets.QWidget):
     uiItems.append(uiItems6)
 
     taskbarItems0 = ["Time: 0:00", "Repeat: off", "Preset: -"]
-    taskbarItems1 = ["1: Re sync", "2: Set time", ""]
+    taskbarItems1 = ["Time menu", "", "Choose item"]
     taskbarItems2 = ["Time: 0:00", "set to", "time: 0:00"]
-    taskbarItems3 = ["1: Save 8ch preset", "2: Load 8ch preset", "3: Save preset"]
+    taskbarItems3 = ["Preset menu", "", "Choose item"]
     taskbarItems4 = ["Presets: " + str(presetIndex), "", ""]
     taskbarItems5 = ["Presets: " + str(presetIndex), "", ""]
     taskbarItems6 = ["Preset: " + str(presetIndex), "", ""]
@@ -181,11 +181,11 @@ class PlayPage(QtWidgets.QWidget):
 
     def update_set_time(self, direction):
         if direction == 1:
-            if self.setTime < self.AudioController.currentChannel.get_lenght() - 1000 or self.setTime == -1:
-                self.setTime += 1000
+            if self.setTime < self.AudioController.currentChannel.get_lenght() - 2000 or self.setTime == -1:
+                self.setTime += 2000
 
-        elif self.setTime > 1000 and direction == 0:
-            self.setTime -= 1000
+        elif self.setTime > 2000 and direction == 0:
+            self.setTime -= 2000
 
         self.taskbarItems2[2] = self.ms_to_time_string(self.setTime) + "/" +\
                                 self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())

@@ -75,9 +75,12 @@ class AudioController(object):
         if self.DEBUG: print("Stopping all")
 
     def toggle_pause_all(self):
-        for c in range(self.channelAmount):
-            self.audioPlayers[c].toggle_pause()
-        if self.DEBUG: print("Play/Pause")
+        if self.audioPlayers[0].get_playback_state() != 6:
+            for c in range(self.channelAmount):
+                self.audioPlayers[c].toggle_pause()
+        else:
+            self.play_all()
+        if self.DEBUG: print("Replaying all")
 
     def prev_channel(self):
         if self.currentChannelIndex < (self.channelAmount-1):
