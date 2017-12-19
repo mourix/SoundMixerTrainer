@@ -130,11 +130,11 @@ def debug_all_playback_options():
 
         print("DEBUG: PRESET TEST")
         for i in range(3):
-            ui.page[2].action_button_pushed(1)
+            ui.page[2].action_button_pushed(1)  # open preset menu
             QtTest.QTest.qWait(100)
-            ui.page[2].action_button_pushed(i)
+            ui.page[2].action_button_pushed(i)  # alle 3 de opties
             QtTest.QTest.qWait(100)
-            ui.page[2].action_button_pushed(2)
+            ui.page[2].action_button_pushed(2)  # select
             QtTest.QTest.qWait(100)
 
         print("DEBUG: REPEAT TEST")
@@ -151,13 +151,13 @@ def debug_random_input(times):
     for i in range(times):
         fId = randint(0, 4)
         if fId == 0:
-            ui.page[2].action_button_pushed(randint(0,6))
+            ui.page[2].action_button_pushed(randint(0, 6))
         elif fId == 1:
-            ui.page[2].channel_button_pushed(randint(0,7))
+            ui.page[2].channel_button_pushed(randint(0, 7))
         elif fId == 2:
             ui.page[2].preset_button_pushed(randint(0,5))
         elif fId == 3:
-            ui.page[2].rotary_button_pushed(randint(0,5))
+            ui.page[2].rotary_button_pushed(randint(0, 5))
         QtTest.QTest.qWait(100)
     print("DEBUG RANDOM: FINISHED")
 

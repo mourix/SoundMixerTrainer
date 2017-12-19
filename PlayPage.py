@@ -287,7 +287,7 @@ class PlayPage(QtWidgets.QWidget):
             if self.menuState == 0:
                 self.toggle_repeat()
 
-            #zet tijd
+            # zet tijd
             if self.menuState == 2:
                 self.AudioController.sync_channels(self.setTime)
                 self.update_timer()

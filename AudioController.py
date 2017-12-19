@@ -11,6 +11,7 @@ from Preset import Preset
 from random import randint
 from PyQt5 import QtTest
 
+
 class AudioController(object):
     """Audio controller classe.
 
@@ -188,8 +189,11 @@ class AudioController(object):
         self.save_presets(self.PIK2, self.multiChannelPresets)
 
     def load_8ch_presets(self, index):
-        for i in range(self.channelAmount):
-            self.audioPlayers[i].set_preset(self.multiChannelPresets[index][i])
+        try:
+            for i in range(self.channelAmount):
+                self.audioPlayers[i].set_preset(self.multiChannelPresets[index][i])
+        except IndexError:
+            print("ERROR: Preset does not exist")
 
     def set_channel_preset(self, id):
         self.currentChannel.set_preset(self.presets[id])
