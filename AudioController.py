@@ -30,6 +30,7 @@ class AudioController(object):
         self.channelAmount = 8
         self.presets = self.load_presets(self.PIK)
         self.multiChannelPresets = self.load_presets(self.PIK2)
+        os.chdir(self.ROOT)  # open de SD kaart
 
         # maak VLC kanalen aan
         for c in range(8):
@@ -228,14 +229,8 @@ class AudioController(object):
         files = []
 
         try:
-            try:
-                if not os.getcwd().endswith("QuickPlay"):
-                    os.chdir("QuickPlay")
-
-            except FileNotFoundError:
+            if not os.getcwd().endswith("QuickPlay"):
                 os.chdir(self.QUICK)
-                if not os.getcwd().endswith("QuickPlay"):
-                    os.chdir("QuickPlay")
 
             for filename in os.listdir('.'):
                 if filename.endswith(".mp3") or filename.endswith(".wav"):
@@ -264,17 +259,11 @@ class AudioController(object):
 
         try:
             if not os.getcwd().endswith("SDMap"):
-                os.chdir("SDMap")
+                os.chdir(self.SD)
                 os.chdir(playDir)
                 if self.DEBUG: print("dir_play: SDMap gevonden")
         except FileNotFoundError:
-            try:
-                if not os.getcwd().endswith("SDMap"):
-                    os.chdir(self.SD)
-                    os.chdir(playDir)
-                    if self.DEBUG: print("dir_play: SDMap gevonden")
-            except FileNotFoundError:
-                if self.DEBUG: print("dir_play: foute bestandslocatie")
+            if self.DEBUG: print("dir_play: foute bestandslocatie")
 
         for filename in os.listdir("."):
             if filename.endswith(".mp3") or filename.endswith(".wav"):

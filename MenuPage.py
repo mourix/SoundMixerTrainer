@@ -83,10 +83,10 @@ class MenuPage(QtWidgets.QWidget):
                     self.UIController.page[2].update_play_stats()
                 # menu voor SD mappen
                 elif self.menuPos == 1:
-                    self.update_menu()
+                    self.update_dir_menu()
                     self.uiItems0[0] = "Load from SD card"
                     self.UIController.topLabel[0].setText(self.uiItems0[0])
-            # speel gekozen SD mapp
+            # speel gekozen SD map
             elif self.menuState == 2:
                 self.UIController.next_page()
                 self.AudioController.dir_play(self.menuItems[self.menuPos])
@@ -132,8 +132,8 @@ class MenuPage(QtWidgets.QWidget):
     def rotary_rotate(self, RotId, direction):
         pass
 
-    # test functie updaten menu
-    def update_menu(self):
+    # update menu met alle mappen in de SD kaart
+    def update_dir_menu(self):
         if self.DEBUG: print("Dirs loading")
 
         try:
@@ -152,7 +152,7 @@ class MenuPage(QtWidgets.QWidget):
         if self.DEBUG: print(dirNames)
 
         self.menuState = 2
-        self.menuItems = dirNames
+        self.menuItems = dirNames[0:8]  # stop maar 8 mappen in het menu!
         self.set_menu_items()
         self.menuPos = 0
         self.set_selector()
