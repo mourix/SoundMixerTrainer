@@ -52,7 +52,7 @@ class ButtonController(object):
         # reset interrupts voor de start van het programma
         self.mcp.reset_interrupts()
 
-    # Interrupt op een van de interrupt pinnen 19, 16
+    # interrupt op een van de interrupt pinnen 19, 16
     def onkeypressed(self, port):
         value = self.mcp.read_interrupt_capture(port)
         # simpele debounce voor nul meting.

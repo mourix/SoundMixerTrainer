@@ -49,7 +49,7 @@ class AudioController(object):
                 if self.DEBUG: print("Set device: " + str(device[6+d]))
                 self.audioPlayers[d].set_audiodevice(device[6+d])
 
-    # zet alle kanalen gelijk aan kanaal 1
+    # zet alle kanalen gelijk aan kanaal 1, of een gekozen tijd
     def sync_channels(self, setTime=None):
         if setTime is not None:
             self.audioPlayers[0].set_time(setTime)
@@ -60,9 +60,11 @@ class AudioController(object):
             if self.DEBUG: print("Synced channel " + str(i + 2) + " to channel 1")
         if self.DEBUG: print("Synced all channels to channel 1")
 
+    # laad een nummer in een audiospeller
     def set_channel_song(self, channel, song):
         self.audioPlayers[channel].set_media(song)
 
+    # zet alle kanalen op afspelen en synchroniseer
     def play_all(self):
         for c in range(self.channelAmount):
             self.audioPlayers[c].play_song()
@@ -70,19 +72,22 @@ class AudioController(object):
         QtTest.QTest.qWait(200)
         self.sync_channels()
 
+    # stop alle kanalen
     def stop_all(self):
         for c in range(self.channelAmount):
             self.audioPlayers[c].stop_song()
         if self.DEBUG: print("Stopping all")
 
+    # pauzeer alle kanalen of speel af
     def toggle_pause_all(self):
         if self.audioPlayers[0].get_playback_state() != 6:
             for c in range(self.channelAmount):
                 self.audioPlayers[c].toggle_pause()
         else:
             self.play_all()
-        if self.DEBUG: print("Replaying all")
+            if self.DEBUG: print("Replaying all")
 
+    # open volgende kanaal in menu
     def prev_channel(self):
         if self.currentChannelIndex < (self.channelAmount-1):
             self.currentChannelIndex += 1
@@ -91,6 +96,7 @@ class AudioController(object):
             self.currentChannelIndex = 0
             self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
+    # open vorige kanaal in menu
     def next_channel(self):
         if self.currentChannelIndex > 0:
             self.currentChannelIndex -= 1
@@ -99,24 +105,30 @@ class AudioController(object):
             self.currentChannelIndex = (self.channelAmount-1)
             self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
+    # kies kanaal in menu
     def set_current_channel(self, channel):
         self.currentChannelIndex = channel
         self.currentChannel = self.audioPlayers[self.currentChannelIndex]
 
+    # geef huidige kanaal terug
     def get_current_channel(self):
         return self.currentChannelIndex
 
+    # zet een EQ band op 0dB
     def reset_eq_band(self, band):
         self.audioPlayers[self.currentChannelIndex].set_eq_band_amp(0, band)
 
+    # zet alle EQ banden van een kanaal op 0dB
     def reset_eq_channel(self, channel):
         for b in range(5):
             self.audioPlayers[channel].set_eq_band_amp(0, b)
 
+    # zet alle EQ banden in de speler op 0dB
     def reset_eq_all(self):
         for c in range(self.channelAmount):
             self.reset_eq_channel(c)
 
+    # zoek preset file, of maak deze aan
     def load_presets(self, PIK):
         try:
             with open(PIK, "rb") as f:
@@ -129,6 +141,7 @@ class AudioController(object):
             else:
                 return self.create_8ch_presets(PIK)
 
+    # sla presets op in file
     def save_presets(self, PIK, presets):
         prevPath = 0
         if os.getcwd() == self.QUICK:
@@ -146,6 +159,7 @@ class AudioController(object):
         if prevPath != 0:
             os.chdir(prevPath)
 
+    # maak een preset file aan met voorgekozen standen
     def create_presets(self, PIK):
         volume = 100
         preamp = 0
@@ -168,6 +182,7 @@ class AudioController(object):
         self.save_presets(PIK, presets)
         return presets
 
+    # maak een 8-kanaals preset aan
     def create_8ch_presets(self, PIK):
         multiChannelPreset = []
         multiChannelPresets = []
@@ -182,6 +197,7 @@ class AudioController(object):
 
         return multiChannelPresets
 
+    # sla een 8-kanaals preset op
     def save_8ch_presets(self, index):
         multiChannelPreset = []
 
