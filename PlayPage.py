@@ -179,13 +179,19 @@ class PlayPage(QtWidgets.QWidget):
         if self.AudioController.audioPlayers[0].get_playback_state() == 6 and self.repeat:
             self.AudioController.play_all()
 
-    def update_set_time(self, direction):
+    # geef de afspeeltijd een tik van 3 seconden
+    def bump_set_time(self, direction):
         if direction == 1:
-            if self.setTime < self.AudioController.currentChannel.get_lenght() - 2000 or self.setTime == -1:
-                self.setTime += 2000
+            if self.setTime < self.AudioController.currentChannel.get_lenght() - 3000 or self.setTime == -1:
+                self.setTime += 3000
+            else:
+                self.setTime = self.AudioController.currentChannel.get_lenght()
 
-        elif self.setTime > 2000 and direction == 0:
-            self.setTime -= 2000
+        elif direction == 0:
+            if self.setTime > 3000:
+                self.setTime -= 3000
+            else:
+                self.setTime = 0
 
         self.taskbarItems2[2] = self.ms_to_time_string(self.setTime) + "/" +\
                                 self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
@@ -207,7 +213,7 @@ class PlayPage(QtWidgets.QWidget):
 
             # zet huidge tijd lager "-"
             elif self.menuState == 2:
-                self.update_set_time(0)
+                self.bump_set_time(0)
                 self.update_timer()
 
             # ga naar save presets menu
@@ -255,7 +261,7 @@ class PlayPage(QtWidgets.QWidget):
 
             # Zet tijd hoger
             elif self.menuState == 2:
-                self.update_set_time(1)
+                self.bump_set_time(1)
 
             # ga naar load presets menu
             elif self.menuState == 3:

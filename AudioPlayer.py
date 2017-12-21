@@ -59,7 +59,7 @@ class AudioPlayer(object):
     def get_volume(self):
         return vlc.libvlc_audio_get_volume(self.player)
 
-    #  stel afspeelvolume in
+    # stel afspeelvolume in
     def set_volume(self, volume):
         vlc.libvlc_audio_set_volume(self.player, volume)
         if self.DEBUG: print("AudioPlayer: Volume " + str(self.get_volume()))
@@ -179,7 +179,7 @@ class AudioPlayer(object):
         vlc.libvlc_audio_equalizer_set_amp_at_index(self.equalizer, bandAmp, band)
         vlc.libvlc_media_player_set_equalizer(self.player, self.equalizer)
         if self.DEBUG: print("EQ " + str(vlc.libvlc_audio_equalizer_get_band_frequency(band))
-              + " Hz " + str(self.get_eq_band_amp(band)) + "dB")
+                             + " Hz " + str(self.get_eq_band_amp(band)) + "dB")
 
         return bandAmp
 
@@ -193,7 +193,7 @@ class AudioPlayer(object):
         #self.set_volume(self.preset.volume)
         return
 
-    # returnt de huidige preset??????
+    # returned de huidige preset
     def get_preset(self):
         eqBanden = []
 
@@ -211,5 +211,6 @@ class AudioPlayer(object):
     def get_mute(self):
         return vlc.libvlc_audio_get_mute(self.player)
 
+    # pauzeer de player
     def toggle_pause(self):
         vlc.libvlc_media_player_pause(self.player)

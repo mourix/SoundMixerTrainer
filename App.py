@@ -16,11 +16,12 @@ from IOExpander import IOExpander
 #import smbus
 
 
+# vang foutmeldingen voordat app afsluit en geef deze weer
 def except_hook(type, value, tback):
-    # Vang foutmeldingen voordat app afsluit en geef deze weer
     sys.__excepthook__(type, value, tback)
 
 
+# initiatie van de rotary encoders op de raspberry pi
 def setup_input_controllers(ui):
     intA1 = 19
     intB1 = 26  # interrupts voor 2 ontbreken
@@ -176,6 +177,7 @@ if __name__ == "__main__":
     else:
         MainWindow.show()
 
+    # debug opties
     #debug_quickplay()
     #debug_folders()
     #debug_random_input(100)

@@ -45,8 +45,9 @@ class MenuPage(QtWidgets.QWidget):
 
         self.set_menu_items()
 
+    # vul menu met lijst
     def set_menu_items(self):
-        # testcode leegmaken menuItems
+        # leegmaken menuItems
         for i in range(8):
             self.menuLabel[i].setText("")
 

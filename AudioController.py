@@ -204,8 +204,9 @@ class AudioController(object):
 
     def get_channel_preset(self, channel):
         #return preset
-        return
+        pass
 
+    # vul de frequentiebanden met willekeurige waarden
     def set_random_preset(self):
         banden = [0, 0, 0, 0, 0]
         volume = randint(0, 100)
@@ -219,6 +220,7 @@ class AudioController(object):
         self.presets[5] = Preset(banden, volume, preamp, 6)
         self.set_channel_preset(5)
 
+    # laad de alle nummers uit de quickplay map
     def quick_play(self):
         """Quickplay
 
@@ -248,7 +250,7 @@ class AudioController(object):
         except FileNotFoundError:
             if self.DEBUG: print("QuickPlay ERROR: Can't find path. No songs have been loaded.")
 
-    # laadt de eerste 8 nummers uit een map. test code
+    # laad de eerste 8 nummers uit een map
     def dir_play(self, playDir):
         """Dirplay
 
