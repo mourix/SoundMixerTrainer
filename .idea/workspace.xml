@@ -10,14 +10,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SoundMixerTrainer$App.coverage" NAME="App Coverage Results" MODIFIED="1513340011373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SoundMixerTrainer$App.coverage" NAME="App Coverage Results" MODIFIED="1516012624618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Preset.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="731">
               <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
               <folding />
             </state>
@@ -37,8 +37,8 @@
       <file leaf-file-name="UIController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UIController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="12" />
+            <state relative-caret-position="663">
+              <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -47,24 +47,23 @@
       <file leaf-file-name="MenuPage.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MenuPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="680">
               <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="35" />
               <folding>
-                <element signature="e#3966#4069#0" expanded="false" />
-                <element signature="e#4189#4233#0" expanded="false" />
-                <element signature="e#4290#4294#0" expanded="false" />
-                <element signature="e#4363#4925#0" expanded="false" />
+                <element signature="e#4459#5061#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="349">
+              <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+              <folding>
+                <element signature="e#89#115#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,29 +71,11 @@
       <file leaf-file-name="AudioPlayer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioPlayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="170">
               <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
               <folding>
                 <element signature="e#76#86#0" expanded="true" />
-                <element signature="e#1783#1830#0" expanded="false" />
-                <element signature="e#1903#2029#0" expanded="false" />
-                <element signature="e#2107#2482#0" expanded="false" />
-                <element signature="e#2546#2600#0" expanded="false" />
-                <element signature="e#2661#2713#0" expanded="false" />
-                <element signature="e#2779#2830#0" expanded="false" />
-                <element signature="e#2929#3420#0" expanded="false" />
-                <element signature="e#3499#3560#0" expanded="false" />
-                <element signature="e#3629#3689#0" expanded="false" />
-                <element signature="e#3763#3972#0" expanded="false" />
-                <element signature="e#4053#4584#0" expanded="false" />
-                <element signature="e#4659#4735#0" expanded="false" />
-                <element signature="e#4815#5206#0" expanded="false" />
-                <element signature="e#5397#6046#0" expanded="false" />
-                <element signature="e#6120#6314#0" expanded="false" />
-                <element signature="e#6388#6550#0" expanded="false" />
-                <element signature="e#6608#6649#0" expanded="false" />
-                <element signature="e#6712#6757#0" expanded="false" />
-                <element signature="e#6795#6837#0" expanded="false" />
+                <element signature="e#6860#6902#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -103,49 +84,24 @@
       <file leaf-file-name="AudioController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="45" selection-end-column="30" />
+            <state relative-caret-position="782">
+              <caret line="46" column="34" lean-forward="false" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
                 <element signature="e#101#110#0" expanded="true" />
-                <element signature="e#2405#2530#0" expanded="false" />
-                <element signature="e#2891#3197#0" expanded="false" />
-                <element signature="e#3235#3541#0" expanded="false" />
-                <element signature="e#3595#3703#0" expanded="false" />
-                <element signature="e#3748#3779#0" expanded="false" />
-                <element signature="e#3824#3892#0" expanded="false" />
-                <element signature="e#3943#4022#0" expanded="false" />
-                <element signature="e#4060#4132#0" expanded="false" />
-                <element signature="e#4175#4587#0" expanded="false" />
-                <element signature="e#4639#5084#0" expanded="false" />
-                <element signature="e#5129#5911#0" expanded="false" />
-                <element signature="e#5961#6278#0" expanded="false" />
-                <element signature="e#6327#6594#0" expanded="false" />
-                <element signature="e#6806#6854#0" expanded="false" />
-                <element signature="e#6907#6936#0" expanded="false" />
-                <element signature="e#6979#7268#0" expanded="false" />
-                <element signature="e#9699#9703#0" expanded="false" />
-                <element signature="e#9763#9767#0" expanded="false" />
-                <element signature="e#9809#9846#0" expanded="false" />
+                <element signature="e#9997#10001#0" expanded="false" />
+                <element signature="e#10061#10065#0" expanded="false" />
+                <element signature="e#10107#10144#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayPage.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayPage.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlayPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="73" column="56" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="73" selection-end-column="56" />
-              <folding>
-                <element signature="e#6369#6624#0" expanded="false" />
-                <element signature="e#7362#7856#0" expanded="false" />
-                <element signature="e#13763#13999#0" expanded="false" />
-                <element signature="e#14466#14643#0" expanded="false" />
-                <element signature="e#14716#14845#0" expanded="false" />
-                <element signature="e#14915#15016#0" expanded="false" />
-                <element signature="e#15083#15331#0" expanded="false" />
-                <element signature="e#15836#16790#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="162">
+              <caret line="394" column="28" lean-forward="true" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -228,7 +184,6 @@
         <option value="$PROJECT_DIR$/IOExpander.py" />
         <option value="$PROJECT_DIR$/ButtonController.py" />
         <option value="$PROJECT_DIR$/IntroPage.py" />
-        <option value="$PROJECT_DIR$/App.py" />
         <option value="$PROJECT_DIR$/RotaryEncoder.py" />
         <option value="$PROJECT_DIR$/Preset.py" />
         <option value="$PROJECT_DIR$/MenuPage.py" />
@@ -236,6 +191,7 @@
         <option value="$PROJECT_DIR$/AudioController.py" />
         <option value="$PROJECT_DIR$/UIController.py" />
         <option value="$PROJECT_DIR$/PlayPage.py" />
+        <option value="$PROJECT_DIR$/App.py" />
       </list>
     </option>
   </component>
@@ -428,35 +384,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <module name="SoundMixerTool" />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SoundMixerTool" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SoundMixerTool" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -488,6 +415,37 @@
       <module name="SoundMixerTool" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SoundMixerTool" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SoundMixerTool" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -526,12 +484,12 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25714287" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2570499" sideWeight="0.5085197" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25714287" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2570499" sideWeight="0.4914803" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.092708334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09371672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -559,7 +517,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/AudioController.py</url>
-          <line>296</line>
+          <line>301</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -601,25 +559,7 @@
           <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding>
             <element signature="e#76#86#0" expanded="true" />
-            <element signature="e#1783#1830#0" expanded="false" />
-            <element signature="e#1903#2029#0" expanded="false" />
-            <element signature="e#2107#2482#0" expanded="false" />
-            <element signature="e#2546#2600#0" expanded="false" />
-            <element signature="e#2661#2713#0" expanded="false" />
-            <element signature="e#2779#2830#0" expanded="false" />
-            <element signature="e#2929#3420#0" expanded="false" />
-            <element signature="e#3499#3560#0" expanded="false" />
-            <element signature="e#3629#3689#0" expanded="false" />
-            <element signature="e#3763#3972#0" expanded="false" />
-            <element signature="e#4053#4584#0" expanded="false" />
-            <element signature="e#4659#4735#0" expanded="false" />
-            <element signature="e#4815#5206#0" expanded="false" />
-            <element signature="e#5397#6046#0" expanded="false" />
-            <element signature="e#6120#6314#0" expanded="false" />
-            <element signature="e#6388#6550#0" expanded="false" />
-            <element signature="e#6608#6649#0" expanded="false" />
-            <element signature="e#6712#6757#0" expanded="false" />
-            <element signature="e#6795#6837#0" expanded="false" />
+            <element signature="e#6860#6902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -673,25 +613,7 @@
           <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding>
             <element signature="e#76#86#0" expanded="true" />
-            <element signature="e#1783#1830#0" expanded="false" />
-            <element signature="e#1903#2029#0" expanded="false" />
-            <element signature="e#2107#2482#0" expanded="false" />
-            <element signature="e#2546#2600#0" expanded="false" />
-            <element signature="e#2661#2713#0" expanded="false" />
-            <element signature="e#2779#2830#0" expanded="false" />
-            <element signature="e#2929#3420#0" expanded="false" />
-            <element signature="e#3499#3560#0" expanded="false" />
-            <element signature="e#3629#3689#0" expanded="false" />
-            <element signature="e#3763#3972#0" expanded="false" />
-            <element signature="e#4053#4584#0" expanded="false" />
-            <element signature="e#4659#4735#0" expanded="false" />
-            <element signature="e#4815#5206#0" expanded="false" />
-            <element signature="e#5397#6046#0" expanded="false" />
-            <element signature="e#6120#6314#0" expanded="false" />
-            <element signature="e#6388#6550#0" expanded="false" />
-            <element signature="e#6608#6649#0" expanded="false" />
-            <element signature="e#6712#6757#0" expanded="false" />
-            <element signature="e#6795#6837#0" expanded="false" />
+            <element signature="e#6860#6902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -752,25 +674,7 @@
           <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding>
             <element signature="e#76#86#0" expanded="true" />
-            <element signature="e#1783#1830#0" expanded="false" />
-            <element signature="e#1903#2029#0" expanded="false" />
-            <element signature="e#2107#2482#0" expanded="false" />
-            <element signature="e#2546#2600#0" expanded="false" />
-            <element signature="e#2661#2713#0" expanded="false" />
-            <element signature="e#2779#2830#0" expanded="false" />
-            <element signature="e#2929#3420#0" expanded="false" />
-            <element signature="e#3499#3560#0" expanded="false" />
-            <element signature="e#3629#3689#0" expanded="false" />
-            <element signature="e#3763#3972#0" expanded="false" />
-            <element signature="e#4053#4584#0" expanded="false" />
-            <element signature="e#4659#4735#0" expanded="false" />
-            <element signature="e#4815#5206#0" expanded="false" />
-            <element signature="e#5397#6046#0" expanded="false" />
-            <element signature="e#6120#6314#0" expanded="false" />
-            <element signature="e#6388#6550#0" expanded="false" />
-            <element signature="e#6608#6649#0" expanded="false" />
-            <element signature="e#6712#6757#0" expanded="false" />
-            <element signature="e#6795#6837#0" expanded="false" />
+            <element signature="e#6860#6902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -835,9 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <marker date="1513252673614" expanded="true" signature="1226:1228" ph="&quot;...&quot;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -859,7 +760,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Preset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="731">
           <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
           <folding />
         </state>
@@ -873,11 +774,12 @@
           <nodes />
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="871.0" y="324.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="871.0" y="325.0" />
           <SelectedNodes />
           <Categories>
             <Category>All</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
           <VISIBILITY>Details</VISIBILITY>
         </state>
       </provider>
@@ -890,21 +792,14 @@
           <nodes />
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.9" x="870.9999999999999" y="324.5" />
+          <settings layout="Hierarchic Group" zoom="0.9" x="871.0" y="325.0" />
           <SelectedNodes />
           <Categories>
-            <Category>Methods</Category>
-            <Category>Inner Classes</Category>
             <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Methods</Category>
           </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -921,6 +816,7 @@
           <settings layout="Hierarchic Group" zoom="1.0" x="93.0" y="95.0" />
           <SelectedNodes />
           <Categories />
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -945,9 +841,10 @@
               <point x="0.0" y="15.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-555.0" y="10.5" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-555.0" y="11.0" />
           <SelectedNodes />
           <Categories />
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -970,108 +867,73 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.9797233030696064" x="823.0265213362165" y="872.2159657561449" />
+          <settings layout="Hierarchic Group" zoom="0.9797233030696064" x="823.0" y="872.0" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
             <Category>Inner Classes</Category>
             <Category>Methods</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AudioPlayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="170">
           <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
             <element signature="e#76#86#0" expanded="true" />
-            <element signature="e#1783#1830#0" expanded="false" />
-            <element signature="e#1903#2029#0" expanded="false" />
-            <element signature="e#2107#2482#0" expanded="false" />
-            <element signature="e#2546#2600#0" expanded="false" />
-            <element signature="e#2661#2713#0" expanded="false" />
-            <element signature="e#2779#2830#0" expanded="false" />
-            <element signature="e#2929#3420#0" expanded="false" />
-            <element signature="e#3499#3560#0" expanded="false" />
-            <element signature="e#3629#3689#0" expanded="false" />
-            <element signature="e#3763#3972#0" expanded="false" />
-            <element signature="e#4053#4584#0" expanded="false" />
-            <element signature="e#4659#4735#0" expanded="false" />
-            <element signature="e#4815#5206#0" expanded="false" />
-            <element signature="e#5397#6046#0" expanded="false" />
-            <element signature="e#6120#6314#0" expanded="false" />
-            <element signature="e#6388#6550#0" expanded="false" />
-            <element signature="e#6608#6649#0" expanded="false" />
-            <element signature="e#6712#6757#0" expanded="false" />
-            <element signature="e#6795#6837#0" expanded="false" />
+            <element signature="e#6860#6902#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AudioController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="45" selection-end-column="30" />
+        <state relative-caret-position="782">
+          <caret line="46" column="34" lean-forward="false" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding>
             <element signature="e#101#110#0" expanded="true" />
-            <element signature="e#2405#2530#0" expanded="false" />
-            <element signature="e#2891#3197#0" expanded="false" />
-            <element signature="e#3235#3541#0" expanded="false" />
-            <element signature="e#3595#3703#0" expanded="false" />
-            <element signature="e#3748#3779#0" expanded="false" />
-            <element signature="e#3824#3892#0" expanded="false" />
-            <element signature="e#3943#4022#0" expanded="false" />
-            <element signature="e#4060#4132#0" expanded="false" />
-            <element signature="e#4175#4587#0" expanded="false" />
-            <element signature="e#4639#5084#0" expanded="false" />
-            <element signature="e#5129#5911#0" expanded="false" />
-            <element signature="e#5961#6278#0" expanded="false" />
-            <element signature="e#6327#6594#0" expanded="false" />
-            <element signature="e#6806#6854#0" expanded="false" />
-            <element signature="e#6907#6936#0" expanded="false" />
-            <element signature="e#6979#7268#0" expanded="false" />
-            <element signature="e#9699#9703#0" expanded="false" />
-            <element signature="e#9763#9767#0" expanded="false" />
-            <element signature="e#9809#9846#0" expanded="false" />
+            <element signature="e#9997#10001#0" expanded="false" />
+            <element signature="e#10061#10065#0" expanded="false" />
+            <element signature="e#10107#10144#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UIController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="12" />
+        <state relative-caret-position="663">
+          <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MenuPage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="680">
           <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="35" />
           <folding>
-            <element signature="e#3966#4069#0" expanded="false" />
-            <element signature="e#4189#4233#0" expanded="false" />
-            <element signature="e#4290#4294#0" expanded="false" />
-            <element signature="e#4363#4925#0" expanded="false" />
+            <element signature="e#4459#5061#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PlayPage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="73" column="56" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="73" selection-end-column="56" />
+        <state relative-caret-position="162">
+          <caret line="394" column="28" lean-forward="true" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
           <folding>
-            <element signature="e#6369#6624#0" expanded="false" />
-            <element signature="e#7362#7856#0" expanded="false" />
-            <element signature="e#13763#13999#0" expanded="false" />
-            <element signature="e#14466#14643#0" expanded="false" />
-            <element signature="e#14716#14845#0" expanded="false" />
-            <element signature="e#14915#15016#0" expanded="false" />
-            <element signature="e#15083#15331#0" expanded="false" />
-            <element signature="e#15836#16790#0" expanded="false" />
+            <element signature="e#89#115#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -162,6 +162,16 @@ def debug_random_input(times):
         QtTest.QTest.qWait(100)
     print("DEBUG RANDOM: FINISHED")
 
+# DEBUG: draai willkeurige rotary encoder
+def debug_rotary_input(times):
+    print("DEBUG RANDOM RE FOR " +str(times) + " TIMES")
+    for i in range(times):
+        rID = randint(0,6)
+        direction = randint(0,2)
+        ui.page[2].rotary_rotate(rID, direction)
+        QtTest.QTest.qWait(100)
+    print("DEBUG ROTARY: FINISHED")
+
 
 if __name__ == "__main__":
     import sys
@@ -182,6 +192,7 @@ if __name__ == "__main__":
     #debug_folders()
     #debug_random_input(100)
     #debug_all_playback_options()
+    #debug_rotary_input(100)
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
     sys.exit(app.exec_())
