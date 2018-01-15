@@ -156,6 +156,7 @@ class UIController(object):
         for i in range(4):
             self.pushButton[i].setText(self.page[id].uiItems0[i + 2])
 
+    # routeer fysieke knoppen op de PI naar de juiste functies
     def button_pressed(self, id, port, btnId):
         if id == 0:
             if port == 0:
