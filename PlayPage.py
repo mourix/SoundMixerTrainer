@@ -401,12 +401,15 @@ class PlayPage(QtWidgets.QWidget):
         self.bottomLabel[1].setText(self.taskbarItems0[1])
 
     def rotary_rotate(self, rotId, direction):
-        if rotId is not 6:
+        if rotId is not 5:
             sldvalue = self.AudioController.currentChannel.bump_eq_band_amp(rotId, direction)
-            self.eqAmpLabel[rotId].setText(str(sldvalue) + "dB")
+            self.eqAmpLabel[rotId].setText(str(int(sldvalue)) + "dB")
+            self.eqSlider[rotId].setValue(sldvalue)
         else:
             sldvalue = self.AudioController.currentChannel.bump_volume(direction)
-            self.eqAmpLabel[rotId].setText(str(sldvalue) + "dB")
+            self.volLabel.setText(str(int(sldvalue)))
+            self.volSlider.setValue(sldvalue)
+
 
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
