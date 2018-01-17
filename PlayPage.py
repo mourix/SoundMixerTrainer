@@ -14,7 +14,6 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-
     DEBUG = True
 
     presetIndex = 1
@@ -391,7 +390,8 @@ class PlayPage(QtWidgets.QWidget):
     # update volume
     def volume_changed(self, sldvalue):
         self.AudioController.currentChannel.set_volume(sldvalue)
-        self.volLabel.setText(str(sldvalue))
+        if self.AudioController.currentChannel.get_mute() == 0:
+            self.volLabel.setText(str(sldvalue))
 
     # zet repeat aan of uit
     def toggle_repeat(self):
@@ -413,7 +413,6 @@ class PlayPage(QtWidgets.QWidget):
             self.volLabel.setText(str(int(sldvalue)))
             self.volSlider.setValue(sldvalue)
 
-
     # update alle labels en sliderposities die van kanaal afhangen
     def update_play_stats(self):
         if self.menuState == 0:
@@ -431,8 +430,8 @@ class PlayPage(QtWidgets.QWidget):
 
         self.volSlider.setValue(self.AudioController.currentChannel.get_volume())
 
-        muteState = self.AudioController.currentChannel.get_mute()
-        if muteState == 0:
-            self.eqFreqLabel[5].setText("Volume")
+        # controleer op mute
+        if self.AudioController.currentChannel.get_mute() == 0:
+            self.volLabel.setText(str(self.volSlider.value()))
         else:
-            self.eqFreqLabel[5].setText("Muted")
+            self.volLabel.setText("Muted")
