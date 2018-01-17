@@ -15,11 +15,19 @@ from IOExpander import IOExpander
 #import RPi.GPIO as GPIO
 #import smbus
 
-
+pauze = 500
 # vang foutmeldingen voordat app afsluit en geef deze weer
 def except_hook(type, value, tback):
     sys.__excepthook__(type, value, tback)
 
+def test_banch(times):
+    for i in range(times):
+        id = randint(0,1)
+        port = randint(0,1)
+        btId = randint(0,7)
+        ui.button_pressed(id, port, btId)
+        QtTest.QTest.qWait(pauze)
+        
 
 # initiatie van de rotary encoders op de raspberry pi
 def setup_input_controllers(ui):
@@ -56,7 +64,7 @@ def debug_quickplay():
 
     for j in range(2):
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)
-        QtTest.QTest.qWait(300)
+        QtTest.QTest.qWait(pauze)
         if ui.stackedWidget.currentIndex() == 2 and os.getcwd().endswith("QuickPlay") and aController.audioPlayers[0].get_playback_state() == 3:
             print("DEBUG: QUICKPLAY PASS")
         else:
@@ -68,18 +76,18 @@ def debug_folders():
     for folders in range(3):
         while ui.stackedWidget.currentIndex() != 0:# introscherm
             ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(3)
-            QtTest.QTest.qWait(200)
+            QtTest.QTest.qWait(pauze)
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)  # menuscherm
-        QtTest.QTest.qWait(200)
+        QtTest.QTest.qWait(pauze)
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(1)  # pijl omlaag
-        QtTest.QTest.qWait(200)
+        QtTest.QTest.qWait(pauze)
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4)  # folder menu
-        QtTest.QTest.qWait(200)
+        QtTest.QTest.qWait(pauze)
         for steps in range(folders):  # scroll door alle mappen
             ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(0)
-            QtTest.QTest.qWait(200)
+            QtTest.QTest.qWait(pauze)
         ui.page[ui.stackedWidget.currentIndex()].action_button_pushed(4) # press play
-        QtTest.QTest.qWait(200)
+        QtTest.QTest.qWait(pauze)
         if ui.stackedWidget.currentIndex() == 2 and not os.getcwd().endswith("QuickPlay") and aController.audioPlayers[0].get_playback_state() == 3:
             print("DEBUG: FOLDER " + os.getcwd()  + " PASS")
         else:
@@ -98,7 +106,7 @@ def debug_all_playback_options():
 
         for j in range(6):  # presets
             ui.page[2].preset_button_pushed(j)
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
 
         for k in range(6):  # EQ
             ui.page[2].rotary_button_pushed(k)
@@ -108,13 +116,13 @@ def debug_all_playback_options():
         print("DEBUG: PLAYING, STOPPING, STOPPING PASS TESTING")
         for l in range(2):  # test afspelen, pauzeren en stoppen
             ui.page[2].action_button_pushed(4) # play
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
             ui.page[2].action_button_pushed(4) # play
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
             ui.page[2].action_button_pushed(4)  # stop
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
             ui.page[2].action_button_pushed(4) # play
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
         if aController.audioPlayers[0].get_playback_state() == 3:
             print("DEBUG: PLAYING, STOPPING, STOPPING PASS")
         else:
@@ -123,7 +131,7 @@ def debug_all_playback_options():
         print("DEBUG: SYNC TEST")
         for i in range(6):  # open time menu en druk driemaal op sync
             ui.page[2].action_button_pushed(0)
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
         if aController.audioPlayers[0].get_playback_state() == 3:
             print("DEBUG: SYNC PASS")
         else:
@@ -132,16 +140,16 @@ def debug_all_playback_options():
         print("DEBUG: PRESET TEST")
         for i in range(3):
             ui.page[2].action_button_pushed(1)  # open preset menu
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
             ui.page[2].action_button_pushed(i)  # alle 3 de opties
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
             ui.page[2].action_button_pushed(2)  # select
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
 
         print("DEBUG: REPEAT TEST")
         for i in range(6):
             ui.page[2].action_button_pushed(2)
-            QtTest.QTest.qWait(100)
+            QtTest.QTest.qWait(pauze)
 
     QtTest.QTest.qWait(2000)
 
@@ -159,7 +167,7 @@ def debug_random_input(times):
             ui.page[2].preset_button_pushed(randint(0,5))
         elif fId == 3:
             ui.page[2].rotary_button_pushed(randint(0, 5))
-        QtTest.QTest.qWait(100)
+        QtTest.QTest.qWait(pauze)
     print("DEBUG RANDOM: FINISHED")
 
 
@@ -171,7 +179,7 @@ def debug_rotary_input(times):
         direction = randint(0, 1)
         for i in range(5):
             ui.page[2].rotary_rotate(rID, direction)
-        QtTest.QTest.qWait(100)
+        QtTest.QTest.qWait(pauze)
     print("DEBUG ROTARY: FINISHED")
 
 
@@ -195,6 +203,7 @@ if __name__ == "__main__":
     #debug_random_input(100)
     #debug_all_playback_options()
     debug_rotary_input(100)
+    test_banch(1000)
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
     sys.exit(app.exec_())
