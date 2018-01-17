@@ -298,13 +298,3 @@ class AudioController(object):
                 if self.DEBUG: print("dir_play: fout in het laden van de bestanden")
 
         self.play_all()
-
-    def play_last(self, audioPlayersLast):
-        pass
-
-    def save_last_played(self, audioPlayersLast):
-        pass
-
-    def load_last_played(self):
-        #return audioPlayersLast
-        pass

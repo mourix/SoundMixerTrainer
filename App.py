@@ -15,19 +15,13 @@ from IOExpander import IOExpander
 #import RPi.GPIO as GPIO
 #import smbus
 
-pauze = 500
+pauze = 50  # vertraging tussen testcases
+
+
 # vang foutmeldingen voordat app afsluit en geef deze weer
 def except_hook(type, value, tback):
     sys.__excepthook__(type, value, tback)
 
-def test_banch(times):
-    for i in range(times):
-        id = randint(0,1)
-        port = randint(0,1)
-        btId = randint(0,7)
-        ui.button_pressed(id, port, btId)
-        QtTest.QTest.qWait(pauze)
-        
 
 # initiatie van de rotary encoders op de raspberry pi
 def setup_input_controllers(ui):
@@ -55,6 +49,16 @@ def setup_input_controllers(ui):
     rotaryencoders.append(RotaryEncoder(22, 23, 3, ui))
     rotaryencoders.append(RotaryEncoder(5, 24, 4, ui))
     rotaryencoders.append(RotaryEncoder(6, 25, 5, ui))
+
+
+# DEBUG: druk op willekeurige toetsen
+def debug_random_input(times):
+    for i in range(times):
+        id = randint(0,1)
+        port = randint(0,1)
+        btId = randint(0,7)
+        ui.button_pressed(id, port, btId)
+        QtTest.QTest.qWait(pauze)
 
 
 # DEBUG: open Quickplay
@@ -154,8 +158,8 @@ def debug_all_playback_options():
     QtTest.QTest.qWait(2000)
 
 
-# DEBUG: druk op willekeurige toetsen
-def debug_random_input(times):
+# DEBUG: open willekeurige knopfuncties aan
+def debug_random_functions(times):
     print("DEBUG RANDOM FOR " + str(times) + " TIMES")
     for i in range(times):
         fId = randint(0, 3)
@@ -203,7 +207,7 @@ if __name__ == "__main__":
     #debug_random_input(100)
     #debug_all_playback_options()
     #debug_rotary_input(100)
-    test_banch(1000)
+    #debug_random_functions(1000)
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze
     sys.exit(app.exec_())

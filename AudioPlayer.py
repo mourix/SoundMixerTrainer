@@ -45,14 +45,14 @@ class AudioPlayer(object):
 
     # pauzeer nummer en zet tijd op 0s
     def stop_song(self):
-        if self.get_playback_state() == 3:
+        if self.get_playback_state() == 3:  # speelt af
             self.player.pause()
             self.set_time(0)
-            print("Song time set to 0")
+            print("Paused and song time set to 0ms")
 
-        elif self.get_playback_state() == 4:
+        elif self.get_playback_state() == 4:  # is gepauzeerd
             self.set_time(0)
-            print("Song time set to 0")
+            print("Song time set to 0ms")
         # self.player.stop() # werkt niet met pi sound devices
 
     # lees afspeelvolume uit

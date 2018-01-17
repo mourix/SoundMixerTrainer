@@ -176,7 +176,7 @@ class PlayPage(QtWidgets.QWidget):
             self.taskbarItems0[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
                                    + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
             self.bottomLabel[0].setText(self.taskbarItems0[0])
-            if self.DEBUG: print(self.AudioController.currentChannel.get_time())
+            if self.DEBUG: print("Playtime: " + str(self.AudioController.currentChannel.get_time()))
 
         # Repeat
         if self.AudioController.audioPlayers[0].get_playback_state() == 6 and self.repeat:
