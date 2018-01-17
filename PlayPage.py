@@ -14,6 +14,9 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
+
+    DEBUG = True
+
     presetIndex = 1
     # dit gedeelte laden / opslaan
     uiItems0 = ["", "", "Time", "Presets", "Repeat", "Back"]
@@ -173,7 +176,7 @@ class PlayPage(QtWidgets.QWidget):
             self.taskbarItems0[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
                                    + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
             self.bottomLabel[0].setText(self.taskbarItems0[0])
-            #if self.DEBUG: print(self.AudioController.currentChannel.get_time())
+            if self.DEBUG: print(self.AudioController.currentChannel.get_time())
 
         # Repeat
         if self.AudioController.audioPlayers[0].get_playback_state() == 6 and self.repeat:
@@ -312,7 +315,7 @@ class PlayPage(QtWidgets.QWidget):
 
             # Load presets
             elif self.menuState == 5:
-                print(self.presetIndex)
+                if self.DEBUG: print(self.presetIndex)
                 self.AudioController.load_8ch_presets(self.presetIndex - 1)
                 self.presetIndex = 1
                 self.update_play_stats()
@@ -361,16 +364,16 @@ class PlayPage(QtWidgets.QWidget):
             self.AudioController.set_random_preset()
 
         self.update_play_stats()
-        print("Preset " + str(btnId+1) + ": preset selected")
+        if self.DEBUG: print("Preset " + str(btnId+1) + ": preset selected")
 
     # kanaal hardwareknoppen
     def channel_button_pushed(self, btnId):
         if btnId <= (self.AudioController.channelAmount-1):
             self.AudioController.set_current_channel(btnId)
             self.update_play_stats()
-            print("Channel " + str(btnId+1) + ": set display")
+            if self.DEBUG: print("Channel " + str(btnId+1) + ": set display")
         else:
-            print("Channel " + str(btnId+1) + ": not playing")
+            if self.DEBUG: print("Channel " + str(btnId+1) + ": not playing")
 
     # reset de eq banden en toggle geluid.
     def rotary_button_pushed(self, btnId):

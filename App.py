@@ -198,11 +198,11 @@ if __name__ == "__main__":
         MainWindow.show()
 
     # debug opties
-    debug_quickplay()
+    #debug_quickplay()
     #debug_folders()
     #debug_random_input(100)
     #debug_all_playback_options()
-    debug_rotary_input(100)
+    #debug_rotary_input(100)
     test_banch(1000)
 
     sys.excepthook = except_hook  # pyqt5 verbergt foutmeldingen, dus vang deze

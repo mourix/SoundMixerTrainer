@@ -24,43 +24,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RotaryEncoder.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RotaryEncoder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UIController.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UIController.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="171" column="80" lean-forward="false" selection-start-line="171" selection-start-column="80" selection-end-line="171" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MenuPage.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MenuPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="35" />
-              <folding>
-                <element signature="e#4459#5061#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="391">
+              <caret line="152" column="28" lean-forward="false" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IOExpander.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IOExpander.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2456">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+            <state relative-caret-position="357">
+              <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
               <folding>
                 <element signature="e#89#115#0" expanded="true" />
               </folding>
@@ -71,7 +59,7 @@
       <file leaf-file-name="AudioPlayer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioPlayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="-2932">
               <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
               <folding>
                 <element signature="e#76#86#0" expanded="true" />
@@ -81,21 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ButtonController.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ButtonController.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AudioController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="46" column="34" lean-forward="false" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+            <state relative-caret-position="204">
+              <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="32" />
               <folding>
                 <element signature="e#101#110#0" expanded="true" />
                 <element signature="e#9997#10001#0" expanded="false" />
@@ -106,11 +84,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayPage.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InputController.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/InputController.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntroPage.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IntroPage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ButtonController.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ButtonController.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayPage.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PlayPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="394" column="28" lean-forward="false" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="28" />
+            <state relative-caret-position="2864">
+              <caret line="175" column="78" lean-forward="false" selection-start-line="175" selection-start-column="78" selection-end-line="175" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -127,8 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>preAmp</find>
-      <find>preamp</find>
       <find>rotary_rotate</find>
       <find>set_channel_preset</find>
       <find>AudioController</find>
@@ -157,6 +163,8 @@
       <find>eqA</find>
       <find>font</find>
       <find>qWait(200)</find>
+      <find>qWait(500)</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>Preset</replace>
@@ -177,6 +185,8 @@
       <replace>taskbarItems1</replace>
       <replace>uiItems0</replace>
       <replace>uiItems1</replace>
+      <replace>qWait(pauze)</replace>
+      <replace>if self.DEBUG: print</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -199,9 +209,9 @@
         <option value="$PROJECT_DIR$/MenuPage.py" />
         <option value="$PROJECT_DIR$/AudioPlayer.py" />
         <option value="$PROJECT_DIR$/AudioController.py" />
-        <option value="$PROJECT_DIR$/PlayPage.py" />
         <option value="$PROJECT_DIR$/UIController.py" />
         <option value="$PROJECT_DIR$/App.py" />
+        <option value="$PROJECT_DIR$/PlayPage.py" />
       </list>
     </option>
   </component>
@@ -500,6 +510,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2570499" sideWeight="0.4914803" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.094249204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -510,7 +521,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -532,7 +542,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PlayPage.py</url>
-          <line>169</line>
+          <line>172</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
@@ -731,44 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InputController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IntroPage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IOExpander.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RotaryEncoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JavaScript-modules-diagram/C:/Users/M/Documents/GitHub/SoundMixerTrainer">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -881,28 +853,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MenuPage.py">
+    <entry file="file://$PROJECT_DIR$/UIController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="35" />
-          <folding>
-            <element signature="e#4459#5061#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="2635">
+          <caret line="159" column="46" lean-forward="true" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlayPage.py">
+    <entry file="file://$PROJECT_DIR$/RotaryEncoder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="394" column="28" lean-forward="false" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="28" />
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Preset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+          <folding>
+            <element signature="e#89#115#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AudioController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="46" column="34" lean-forward="false" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+        <state relative-caret-position="204">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="32" />
           <folding>
             <element signature="e#101#110#0" expanded="true" />
             <element signature="e#9997#10001#0" expanded="false" />
@@ -912,17 +900,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ButtonController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AudioPlayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="-2932">
           <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
             <element signature="e#76#86#0" expanded="true" />
@@ -931,21 +911,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UIController.py">
+    <entry file="file://$PROJECT_DIR$/ButtonController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="171" column="80" lean-forward="false" selection-start-line="171" selection-start-column="80" selection-end-line="171" selection-end-column="80" />
+        <state relative-caret-position="417">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App.py">
+    <entry file="file://$PROJECT_DIR$/InputController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
-          <folding>
-            <element signature="e#89#115#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IntroPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IOExpander.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2456">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MenuPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="152" column="28" lean-forward="false" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlayPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2864">
+          <caret line="175" column="78" lean-forward="false" selection-start-line="175" selection-start-column="78" selection-end-line="175" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
