@@ -177,7 +177,7 @@ class PlayPage(QtWidgets.QWidget):
             self.bottomLabel[0].setText(self.taskbarItems0[0])
             if self.DEBUG: print("Playtime: " + str(self.AudioController.currentChannel.get_time()))
 
-        # Repeat
+        # Repeat en beveiliging voor SD-kaart ontkoppeling
         if self.AudioController.audioPlayers[0].get_playback_state() == 6:
             try:
                 os.listdir(self.AudioController.SD)
@@ -187,7 +187,6 @@ class PlayPage(QtWidgets.QWidget):
                 if self.UIController.stackedWidget.currentIndex() != 0 or os.getcwd() != self.AudioController.QUICK:
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
-
 
     # geef de afspeeltijd een tik van 3 seconden
     def bump_set_time(self, direction):

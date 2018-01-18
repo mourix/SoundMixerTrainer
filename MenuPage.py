@@ -89,10 +89,14 @@ class MenuPage(QtWidgets.QWidget):
                     self.UIController.topLabel[0].setText(self.uiItems0[0])
             # speel gekozen SD map
             elif self.menuState == 2:
-                self.UIController.next_page()
-                self.AudioController.dir_play(self.menuItems[self.menuPos])
-                self.AudioController.set_current_channel(0)
-                self.UIController.page[2].update_play_stats()
+                try:
+                    self.AudioController.dir_play(self.menuItems[self.menuPos])
+                    self.UIController.next_page()
+                    self.AudioController.set_current_channel(0)
+                    self.UIController.page[2].update_play_stats()
+                except:
+                    self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
+                    print("ERROR: No SD card found!!")
 
         # vorige
         elif btnId == 3:
@@ -137,12 +141,14 @@ class MenuPage(QtWidgets.QWidget):
     def update_dir_menu(self):
         if self.DEBUG: print("Dirs loading")
 
+        # mount sd-kaart
         try:
             dirList = os.listdir(self.AudioController.SDRoot)
             SD = self.AudioController.SDRoot + "/" + dirList[0]
         except:
-            print("No SD card found!!")
+            print("ERROR: No SD card found!!")
 
+        # lees sd-kaart uit
         try:
             os.listdir(SD)
         except:

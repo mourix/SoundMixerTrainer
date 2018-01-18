@@ -251,6 +251,7 @@ class AudioController(object):
         if self.DEBUG: print("Quick Play initializing")
         files = []
 
+        # open Quickplay map
         try:
             if not os.getcwd().endswith("QuickPlay"):
                 os.chdir(self.QUICK)
@@ -280,14 +281,16 @@ class AudioController(object):
         files = []
         files.clear()
 
+        # zoek naar SD-kaart
         try:
             dirList = os.listdir(self.SDRoot)
             SD = self.SDRoot + "/" + dirList[0]
             os.chdir(SD)
             os.chdir(playDir)
         except:
-            print("No SD card found!!")
+            print("ERROR: No SD card found!!")
 
+        # laad nummers lijst
         for filename in os.listdir("."):
             if filename.endswith(".mp3") or filename.endswith(".wav"):
                 files.append(filename)
