@@ -138,17 +138,24 @@ class MenuPage(QtWidgets.QWidget):
         if self.DEBUG: print("Dirs loading")
 
         try:
-            os.listdir("SDMap")
-        except FileNotFoundError:
+            dirList = os.listdir(self.AudioController.SDRoot)
+            SD = self.AudioController.SDRoot + "/" + dirList[0]
+        except:
+            print("No SD card found!!")
+
+        try:
+            os.listdir(SD)
+        except:
             os.chdir("..")
             try:
-                os.listdir("SDMap")
+                os.listdir(SD)
             except FileNotFoundError:
                 os.chdir("..")
 
         dirNames = []
-        for dirs in os.listdir("SDMap"):
-            dirNames.append(os.path.join(dirs))
+        for dirs in os.listdir(SD):
+            if not dirs.startswith("System Volume"):
+                dirNames.append(os.path.join(dirs))
 
         if self.DEBUG: print(dirNames)
 

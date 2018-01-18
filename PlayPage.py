@@ -6,7 +6,7 @@ Auteurs: Jos van Mourik & Matthijs Daggelders
 """
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import os
 
 class PlayPage(QtWidgets.QWidget):
     """Afspeelpagina klasse.
@@ -178,8 +178,16 @@ class PlayPage(QtWidgets.QWidget):
             if self.DEBUG: print("Playtime: " + str(self.AudioController.currentChannel.get_time()))
 
         # Repeat
-        if self.AudioController.audioPlayers[0].get_playback_state() == 6 and self.repeat:
-            self.AudioController.play_all()
+        if self.AudioController.audioPlayers[0].get_playback_state() == 6:
+            try:
+                os.listdir(self.AudioController.SD)
+                if self.repeat:
+                    self.AudioController.play_all()
+            except:
+                if self.UIController.stackedWidget.currentIndex() != 0 or os.getcwd() != self.AudioController.QUICK:
+                    self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
+                    self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
+
 
     # geef de afspeeltijd een tik van 3 seconden
     def bump_set_time(self, direction):

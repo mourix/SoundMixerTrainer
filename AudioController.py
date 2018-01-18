@@ -19,9 +19,14 @@ class AudioController(object):
     """
     PIK = "presets.dat"
     PIK2 = "8chpreset.dat"
-    ROOT = "C:\SoundMixerTrainer"
-    QUICK = "C:\SoundMixerTrainer\QuickPlay"
-    SD = "C:\SoundMixerTrainer\SDMap"
+    if os.name == "posix":
+        ROOT = "/home/pi/SoundMixerTrainer"
+        QUICK = "/home/pi/QuickPlay"
+        SDRoot = "/media/pi"
+    else:
+        ROOT = "C:/SoundMixerTrainer"
+        QUICK = "C:/SoundMixerTrainer/QuickPlay"
+        SDRoot = "C:/SoundMixerTrainer/SD"
     DEBUG = True
 
     def __init__(self):
@@ -276,12 +281,12 @@ class AudioController(object):
         files.clear()
 
         try:
-            if not os.getcwd().endswith("SDMap"):
-                os.chdir(self.SD)
-                os.chdir(playDir)
-                if self.DEBUG: print("dir_play: SDMap gevonden")
-        except FileNotFoundError:
-            if self.DEBUG: print("dir_play: foute bestandslocatie")
+            dirList = os.listdir(self.SDRoot)
+            SD = self.SDRoot + "/" + dirList[0]
+            os.chdir(SD)
+            os.chdir(playDir)
+        except:
+            print("No SD card found!!")
 
         for filename in os.listdir("."):
             if filename.endswith(".mp3") or filename.endswith(".wav"):
