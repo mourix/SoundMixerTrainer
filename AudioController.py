@@ -285,13 +285,10 @@ class AudioController(object):
         files.clear()
 
         # zoek naar SD-kaart
-        try:
-            dirList = os.listdir(self.SDRoot)
-            SD = self.SDRoot + "/" + dirList[0]
-            os.chdir(SD)
-            os.chdir(playDir)
-        except:
-            print("ERROR: No SD card found!!")
+        dirList = os.listdir(self.SDRoot)
+        SD = self.SDRoot + "/" + dirList[0]
+        os.chdir(SD)
+        os.chdir(playDir)
 
         # laad nummers lijst
         for filename in os.listdir("."):

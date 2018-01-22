@@ -87,7 +87,8 @@ class MenuPage(QtWidgets.QWidget):
                     self.update_dir_menu()
                     self.uiItems0[0] = "Load from SD card"
                     self.UIController.topLabel[0].setText(self.uiItems0[0])
-            # speel gekozen SD map
+
+            # speel gekozen SD map, controleer aanwezigheid kaart
             elif self.menuState == 2:
                 try:
                     self.AudioController.dir_play(self.menuItems[self.menuPos])
