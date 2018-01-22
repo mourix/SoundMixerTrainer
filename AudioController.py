@@ -24,9 +24,12 @@ class AudioController(object):
         QUICK = "/home/pi/QuickPlay"
         SDRoot = "/media/pi"
     else:
-        ROOT = "C:/SoundMixerTrainer"
-        QUICK = "C:/SoundMixerTrainer/QuickPlay"
-        SDRoot = "C:/SoundMixerTrainer/SD"
+        #ROOT = "C:/SoundMixerTrainer"
+        #QUICK = "C:/SoundMixerTrainer/QuickPlay"
+        #SDRoot = "C:/SoundMixerTrainer/SD"
+        ROOT = "C:/Users/M/Documents/GitHub/SoundMixerTrainer"
+        QUICK = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/Quickplay"
+        SDRoot = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/SDMap"
     DEBUG = True
 
     def __init__(self):

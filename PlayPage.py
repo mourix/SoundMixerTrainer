@@ -14,7 +14,7 @@ class PlayPage(QtWidgets.QWidget):
     Initialiseerd de afspeelpagina en update de schruifknoppen.
     """
 
-    DEBUG = True
+    DEBUG = False
 
     presetIndex = 1
     # dit gedeelte laden / opslaan
@@ -176,6 +176,15 @@ class PlayPage(QtWidgets.QWidget):
                                    + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
             self.bottomLabel[0].setText(self.taskbarItems0[0])
             if self.DEBUG: print("Playtime: " + str(self.AudioController.currentChannel.get_time()))
+            timer1 = self.AudioController.audioPlayers[0].get_time()
+            timer2 = self.AudioController.audioPlayers[1].get_time()
+
+            if timer1 - timer2 > 200 or timer2 - timer1 >200:
+                self.AudioController.sync_channels()
+
+
+            print("DEBUG timer1:" + str(self.AudioController.audioPlayers[0].get_time()))
+            print("DEBUG timer7:" + str(self.AudioController.audioPlayers[1].get_time()))
 
         # Repeat en beveiliging voor SD-kaart ontkoppeling
         if self.AudioController.audioPlayers[0].get_playback_state() == 6:
