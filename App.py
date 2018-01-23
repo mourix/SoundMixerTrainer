@@ -12,8 +12,8 @@ from AudioController import AudioController
 from RotaryEncoder import RotaryEncoder
 from ButtonController import ButtonController
 from IOExpander import IOExpander
-#import RPi.GPIO as GPIO
-#import smbus
+import RPi.GPIO as GPIO
+import smbus
 
 pauze = 50  # vertraging tussen testcases
 

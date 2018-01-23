@@ -193,7 +193,7 @@ class PlayPage(QtWidgets.QWidget):
                 if self.repeat:
                     self.AudioController.play_all()
             except:
-                if self.UIController.stackedWidget.currentIndex() != 0 or os.getcwd() != self.AudioController.QUICK:
+                if self.UIController.stackedWidget.currentIndex() == 2 and os.getcwd() != self.AudioController.QUICK:
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
 
