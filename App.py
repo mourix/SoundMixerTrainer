@@ -44,11 +44,11 @@ def setup_input_controllers(ui):
     # Setup rotary encoders
     rotaryencoders = []
     rotaryencoders.append(RotaryEncoder(4, 14, 0, ui))
-    rotaryencoders.append(RotaryEncoder(17, 15, 1, ui))
-    rotaryencoders.append(RotaryEncoder(27, 18, 2, ui))
-    rotaryencoders.append(RotaryEncoder(22, 23, 3, ui))
-    rotaryencoders.append(RotaryEncoder(5, 24, 4, ui))
-    rotaryencoders.append(RotaryEncoder(6, 25, 5, ui))
+    rotaryencoders.append(RotaryEncoder(15, 18, 1, ui))
+    rotaryencoders.append(RotaryEncoder(27, 22, 2, ui))
+    rotaryencoders.append(RotaryEncoder(23, 5, 3, ui))
+    rotaryencoders.append(RotaryEncoder(6, 12, 4, ui))
+    rotaryencoders.append(RotaryEncoder(13, 21, 5, ui))
 
 
 # DEBUG: druk op willekeurige toetsen
