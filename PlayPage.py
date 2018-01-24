@@ -175,16 +175,10 @@ class PlayPage(QtWidgets.QWidget):
             self.taskbarItems0[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \
                                    + "/" + self.ms_to_time_string(self.AudioController.currentChannel.get_lenght())
             self.bottomLabel[0].setText(self.taskbarItems0[0])
-            if self.DEBUG: print("Playtime: " + str(self.AudioController.currentChannel.get_time()))
-            timer1 = self.AudioController.audioPlayers[0].get_time()
-            timer2 = self.AudioController.audioPlayers[1].get_time()
-
-            if timer1 - timer2 > 200 or timer2 - timer1 >200:
-                self.AudioController.sync_channels()
-
-
-            print("DEBUG timer1:" + str(self.AudioController.audioPlayers[0].get_time()))
-            print("DEBUG timer7:" + str(self.AudioController.audioPlayers[1].get_time()))
+            #if self.DEBUG: print("Playtime1: " + str(self.AudioController.currentChannel.get_time()))
+            #if self.DEBUG: print("Playtime2: " + str(self.AudioController.audioPlayers[5].get_time()))
+            #print("DEBUG timer1:" + str(self.AudioController.audioPlayers[0].get_time()))
+            #print("DEBUG timer7:" + str(self.AudioController.audioPlayers[1].get_time()))
 
         # Repeat en beveiliging voor SD-kaart ontkoppeling
         if self.AudioController.audioPlayers[0].get_playback_state() == 6:
@@ -193,9 +187,13 @@ class PlayPage(QtWidgets.QWidget):
                 if self.repeat:
                     self.AudioController.play_all()
             except:
-                if self.UIController.stackedWidget.currentIndex() == 2 and os.getcwd() != self.AudioController.QUICK:
+                if self.UIController.stackedWidget.currentIndex() == 2 and self.AudioController.playerType == 1:
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
+                else:
+                    if self.repeat:
+                        self.AudioController.play_all()
+
 
     # geef de afspeeltijd een tik van 3 seconden
     def bump_set_time(self, direction):

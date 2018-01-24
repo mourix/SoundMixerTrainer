@@ -19,6 +19,7 @@ class AudioController(object):
     """
     PIK = "presets.dat"
     PIK2 = "8chpreset.dat"
+    playerType = 0
     if os.name == "posix":
         ROOT = "/home/pi/SoundMixerTrainer"
         QUICK = "/home/pi/QuickPlay"
@@ -63,9 +64,13 @@ class AudioController(object):
             self.audioPlayers[0].set_time(setTime)
             if self.DEBUG: print("Set time for channel 1")
 
-        for i in range(self.channelAmount - 1):
-            self.audioPlayers[i + 1].set_time(self.audioPlayers[0].get_time())
-            if self.DEBUG: print("Synced channel " + str(i + 2) + " to channel 1")
+        a = self.audioPlayers[0].get_time()
+
+        QtTest.QTest.qWait(300)
+        for i in range(self.channelAmount):
+            self.audioPlayers[i].set_time(a)
+
+        if self.DEBUG: print("Synced channel " + str(i + 2) + " to channel 1")
         if self.DEBUG: print("Synced all channels to channel 1")
 
     # laad een nummer in een audiospeller
@@ -77,8 +82,8 @@ class AudioController(object):
         for c in range(self.channelAmount):
             self.audioPlayers[c].play_song()
         if self.DEBUG: print("Playing all")
-        QtTest.QTest.qWait(200)
-        self.sync_channels()
+        #QtTest.QTest.qWait(200)
+        #self.sync_channels()
 
     # stop alle kanalen
     def stop_all(self):
@@ -93,7 +98,9 @@ class AudioController(object):
                 self.audioPlayers[c].toggle_pause()
         else:
             self.play_all()
+            self.sync_channels()
             if self.DEBUG: print("Replaying all")
+        QtTest.QTest.qWait(300)
 
     # open volgende kanaal in menu
     def prev_channel(self):

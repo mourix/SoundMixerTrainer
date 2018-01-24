@@ -81,6 +81,7 @@ class MenuPage(QtWidgets.QWidget):
                     self.UIController.next_page()
                     self.AudioController.quick_play()
                     self.AudioController.set_current_channel(0)
+                    self.AudioController.playerType = 0
                     self.UIController.page[2].update_play_stats()
                 # menu voor SD mappen
                 elif self.menuPos == 1:
@@ -94,6 +95,7 @@ class MenuPage(QtWidgets.QWidget):
                     self.AudioController.dir_play(self.menuItems[self.menuPos])
                     self.UIController.next_page()
                     self.AudioController.set_current_channel(0)
+                    self.AudioController.playerType = 1
                     self.UIController.page[2].update_play_stats()
                 except:
                     self.UIController.page[self.UIController.stackedWidget.currentIndex()].action_button_pushed(3)
