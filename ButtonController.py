@@ -7,6 +7,7 @@ Auteurs: Matthijs Daggelders
 
 import UIController
 import RPi.GPIO as GPIO
+from PyQt5 import QtTest
 
 
 class ButtonController(object):
@@ -65,6 +66,7 @@ class ButtonController(object):
                     if self.DEBUG: print(self.mcp.get_name, "port: ", port, "bit: ", i+1)
                     self.output(port, i)
         self.currVal = value
+        QtTest.QTest.qWait(200)
         return
 
     def output(self, port, bit):
