@@ -14,6 +14,9 @@ from ButtonController import ButtonController
 from IOExpander import IOExpander
 import RPi.GPIO as GPIO
 import smbus
+import time
+import sys
+import subprocess
 
 pauze = 50  # vertraging tussen testcases
 
@@ -186,14 +189,24 @@ def debug_rotary_input(times):
         QtTest.QTest.qWait(pauze)
     print("DEBUG ROTARY: FINISHED")
 
+def sluitaf(app):
+    time.sleep(1)
+    p = subprocess.Popen("sudo python3 /home/pi/SoundMixerTrainer/startstop.py", shell=True)
+    print(p)
+    MainWindow.close()
+
+
 
 if __name__ == "__main__":
-    import sys
     aController = AudioController()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = UIController(MainWindow, aController)
 
+    GPIO.setmode(GPIO.BCM)
+
+    GPIO.setup(0, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    time.sleep(1)
     # fullscreen op Raspberry Pi (linux)
     if os.name == "posix":
         MainWindow.showFullScreen()
@@ -201,6 +214,9 @@ if __name__ == "__main__":
     else:
         MainWindow.show()
 
+    # time.sleep(1)
+
+    GPIO.add_event_detect(0, GPIO.RISING, callback=lambda afsluiten: sluitaf(app))
     # debug opties
     #debug_quickplay()
     #debug_folders()

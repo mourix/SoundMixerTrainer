@@ -169,4 +169,4 @@ class UIController(object):
             else:
                 self.page[self.stackedWidget.currentIndex()].rotary_button_pushed(btnId)
 
-        if self.DEBUG: print("UIController: button pressed" + id + port + btnId)
+        if self.DEBUG: print("UIController: button pressed" + str(id) + str(port) + str(btnId))

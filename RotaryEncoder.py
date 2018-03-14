@@ -6,7 +6,7 @@ Auteurs: Matthijs Daggelders
 """
 
 import UIController
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
