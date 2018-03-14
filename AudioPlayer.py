@@ -22,6 +22,7 @@ class AudioPlayer(object):
         self.instance = vlc.Instance("--file-caching=500")
         self.player = self.instance.media_player_new()
         self.preset = preset
+        self.muteState = 0
 
         # zet equalizer aan
         self.equalizer = vlc.libvlc_audio_equalizer_new()
@@ -205,11 +206,16 @@ class AudioPlayer(object):
 
     # mute de player
     def toggle_mute(self):
-        vlc.libvlc_audio_toggle_mute(self.player)
+        if self.muteState == 0:
+            vlc.libvlc_audio_set_mute(self.player, 1)
+            self.muteState = 1
+        elif self.muteState == 1:
+            vlc.libvlc_audio_set_mute(self.player, 0)
+            self.muteState = 0
 
     # vraag de mutestatus op
     def get_mute(self):
-        return vlc.libvlc_audio_get_mute(self.player)
+        return self.muteState
 
     # pauzeer de player
     def toggle_pause(self):
