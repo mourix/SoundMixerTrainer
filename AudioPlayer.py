@@ -165,7 +165,7 @@ class AudioPlayer(object):
 
     # geef een tik aan EQ band amp
     def bump_eq_band_amp(self, band, direction):
-        bandAmp = self.get_eq_band_amp(band)
+        bandAmp = self.get_eq_band_amp(band*2)
 
         if direction == 0 and bandAmp > -20:
             bandAmp -= 1
@@ -174,13 +174,14 @@ class AudioPlayer(object):
             bandAmp += 1
 
         else:
-            if self.DEBUG: print("EQ gain " + str(self.get_eq_band_amp(band)) + "dB")
+            if self.DEBUG: print("EQ gain " + str(self.get_eq_band_amp(band*2)) + "dB")
             return bandAmp
 
-        vlc.libvlc_audio_equalizer_set_amp_at_index(self.equalizer, bandAmp, band)
+        vlc.libvlc_audio_equalizer_set_amp_at_index(self.equalizer, bandAmp, band*2)
+        vlc.libvlc_audio_equalizer_set_amp_at_index(self.equalizer, bandAmp, (band*2)+1)
         vlc.libvlc_media_player_set_equalizer(self.player, self.equalizer)
-        if self.DEBUG: print("EQ " + str(vlc.libvlc_audio_equalizer_get_band_frequency(band))
-                             + " Hz " + str(self.get_eq_band_amp(band)) + "dB")
+        if self.DEBUG: print("EQ " + str(vlc.libvlc_audio_equalizer_get_band_frequency(band*2))
+                             + " Hz " + str(self.get_eq_band_amp(band*2)) + "dB")
 
         return bandAmp
 
