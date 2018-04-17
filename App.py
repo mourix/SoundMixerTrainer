@@ -189,12 +189,12 @@ def debug_rotary_input(times):
         QtTest.QTest.qWait(pauze)
     print("DEBUG ROTARY: FINISHED")
 
+
 def sluitaf(app):
     time.sleep(1)
     p = subprocess.Popen("sudo python3 /home/pi/SoundMixerTrainer/startstop.py", shell=True)
     print(p)
     MainWindow.close()
-
 
 
 if __name__ == "__main__":

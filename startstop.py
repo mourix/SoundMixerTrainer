@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     GPIO.setup(0, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    while (1):
+    while 1:
         time.sleep(2)
         GPIO.wait_for_edge(0, GPIO.RISING)
         print("hallo")

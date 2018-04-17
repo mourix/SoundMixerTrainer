@@ -20,6 +20,8 @@ class AudioController(object):
     PIK = "presets.dat"
     PIK2 = "8chpreset.dat"
     playerType = 0
+    DEBUG = True
+
     if os.name == "posix":
         ROOT = "/home/pi/SoundMixerTrainer"
         QUICK = "/home/pi/QuickPlay"
@@ -31,7 +33,6 @@ class AudioController(object):
         ROOT = "C:/Users/M/Documents/GitHub/SoundMixerTrainer"
         QUICK = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/Quickplay"
         SDRoot = "C:/Users/M/Documents/GitHub/SoundMixerTrainer/SDMap"
-    DEBUG = True
 
     def __init__(self):
         self.audioPlayers = []
@@ -54,8 +55,8 @@ class AudioController(object):
             device = self.audioPlayers[0].emum_audiodevices()
 
             # stel audiokanalen in
-            # Indien de geluidskaart MET HDMI wordt gebruikt, beginnen de MONO channels op device ID 6
-            # Indien de geluidskaart ZONDER HDMI wordt gebruikt, beginnen de MONO channels op device ID 7
+            # indien de geluidskaart MET HDMI wordt gebruikt, beginnen de MONO channels op device ID 6
+            # indien de geluidskaart ZONDER HDMI wordt gebruikt, beginnen de MONO channels op device ID 7
             for d in range(8):
                 if self.DEBUG: print("Set device: " + str(device[7+d]))
                 self.audioPlayers[d].set_audiodevice(device[7+d])

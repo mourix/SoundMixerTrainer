@@ -8,6 +8,7 @@ Auteurs: Jos van Mourik & Matthijs Daggelders
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
+
 class PlayPage(QtWidgets.QWidget):
     """Afspeelpagina klasse.
 
@@ -193,7 +194,6 @@ class PlayPage(QtWidgets.QWidget):
                 else:
                     if self.repeat:
                         self.AudioController.play_all()
-
 
     # geef de afspeeltijd een tik van 3 seconden
     def bump_set_time(self, direction):
