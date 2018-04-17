@@ -59,14 +59,14 @@ class ButtonController(object):
         # simpele debounce voor nul meting.
         # alleen triggeren als de nieuwe waarde lager is dan de vorige
         # Hierdoor wordt het loslaten van een knop niet als verandering gezien
-        if (value < self.currVal):
+        if value < self.currVal:
             # bepaal welke bit er is getriggert
             for i in range(8):
                 if self.mcp.checkbit(value, i) != self.mcp.checkbit(self.currVal, i):
                     if self.DEBUG: print(self.mcp.get_name, "port: ", port, "bit: ", i+1)
                     self.output(port, i)
         self.currVal = value
-        QtTest.QTest.qWait(200)
+        QtTest.QTest.qWait(100)
         return
 
     def output(self, port, bit):
