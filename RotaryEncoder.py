@@ -41,7 +41,6 @@ class RotaryEncoder(object):
     # Rotary encoder interrupt:
     # Dez functie wordt aangeroepen voor zowel A als B
     def rotary_interrupt(self, enc):
-
         # Lees switches
         self.switch_A = GPIO.input(self.enc_A)
         self.switch_B = GPIO.input(self.enc_B)

@@ -34,10 +34,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AudioPlayer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AudioPlayer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioPlayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
+            <state relative-caret-position="127">
               <caret line="185" column="22" lean-forward="false" selection-start-line="185" selection-start-column="22" selection-end-line="185" selection-end-column="22" />
               <folding>
                 <element signature="e#76#86#0" expanded="true" />
@@ -46,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RotaryEncoder.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RotaryEncoder.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RotaryEncoder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="450">
+              <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -59,9 +59,11 @@
       <file leaf-file-name="UIController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UIController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
-              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="552">
+              <caret line="160" column="36" lean-forward="false" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
+              <folding>
+                <element signature="e#101#151#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,8 +105,8 @@
       <file leaf-file-name="ButtonController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ButtonController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="688">
+              <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
               <folding>
                 <element signature="e#86#105#0" expanded="true" />
               </folding>
@@ -206,11 +208,11 @@
         <option value="$PROJECT_DIR$/AudioController.py" />
         <option value="$PROJECT_DIR$/PlayPage.py" />
         <option value="$PROJECT_DIR$/App.py" />
-        <option value="$PROJECT_DIR$/RotaryEncoder.py" />
         <option value="$PROJECT_DIR$/startstop.py" />
+        <option value="$PROJECT_DIR$/AudioPlayer.py" />
+        <option value="$PROJECT_DIR$/RotaryEncoder.py" />
         <option value="$PROJECT_DIR$/UIController.py" />
         <option value="$PROJECT_DIR$/ButtonController.py" />
-        <option value="$PROJECT_DIR$/AudioPlayer.py" />
       </list>
     </option>
   </component>
@@ -220,7 +222,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="960" />
@@ -501,7 +503,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -774,14 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UIController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PlayPage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -792,19 +786,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AudioPlayer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
+        <state relative-caret-position="127">
           <caret line="185" column="22" lean-forward="false" selection-start-line="185" selection-start-column="22" selection-end-line="185" selection-end-column="22" />
           <folding>
             <element signature="e#76#86#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RotaryEncoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -846,13 +832,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UIController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="160" column="36" lean-forward="false" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
+          <folding>
+            <element signature="e#101#151#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ButtonController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="688">
+          <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
           <folding>
             <element signature="e#86#105#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RotaryEncoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>

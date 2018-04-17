@@ -66,7 +66,7 @@ class ButtonController(object):
                     if self.DEBUG: print(self.mcp.get_name, "port: ", port, "bit: ", i+1)
                     self.output(port, i)
         self.currVal = value
-        QtTest.QTest.qWait(100)
+        QtTest.QTest.qWait(200)
         return
 
     def output(self, port, bit):
