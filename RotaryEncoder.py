@@ -7,7 +7,7 @@ Auteurs: Matthijs Daggelders
 
 import UIController
 import RPi.GPIO as GPIO
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, QtTest
 
 
 class RotaryEncoder(object):
@@ -58,4 +58,5 @@ class RotaryEncoder(object):
                 self.UIController.page[self.UIController.stackedWidget.currentIndex()].rotary_rotate(self.id, 0)
             else:
                 self.UIController.page[self.UIController.stackedWidget.currentIndex()].rotary_rotate(self.id, 1)
+            QtTest.QTest.qWait(50)
         return
