@@ -48,15 +48,17 @@ class AudioController(object):
 
         self.currentChannel = self.audioPlayers[self.currentChannelIndex]  # zet huidige kanaal op currentChannel
 
-        # raspberry pi: zet elke speler op een eigen kanaal
+        # raspberry pi: zet elke speler op een eigen kanaal van de 7.1 USB sound card
         if os.name == "posix":
             # lees alle geluidskanalen uit
             device = self.audioPlayers[0].emum_audiodevices()
 
             # stel audiokanalen in
+            # Indien de geluidskaart MET HDMI wordt gebruike, beginnen de MONO channels op ID 6
+            # Indien de geluidskaart ZONDER HDMI wordt gebruike, beginnen de MONO channels op ID 7
             for d in range(8):
-                if self.DEBUG: print("Set device: " + str(device[6+d]))
-                self.audioPlayers[d].set_audiodevice(device[6+d])
+                if self.DEBUG: print("Set device: " + str(device[7+d]))
+                self.audioPlayers[d].set_audiodevice(device[7+d])
 
     # zet alle kanalen gelijk aan kanaal 1, of een gekozen tijd
     def sync_channels(self, setTime=None):
