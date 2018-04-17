@@ -165,7 +165,7 @@ class AudioPlayer(object):
 
     # geef een tik aan EQ band amp
     def bump_eq_band_amp(self, band, direction):
-        bandAmp = self.get_eq_band_amp(band*2)
+        bandAmp = self.get_eq_band_amp(band)
 
         if direction == 0 and bandAmp > -20:
             bandAmp -= 1
