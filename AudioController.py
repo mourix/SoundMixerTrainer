@@ -54,8 +54,8 @@ class AudioController(object):
             device = self.audioPlayers[0].emum_audiodevices()
 
             # stel audiokanalen in
-            # Indien de geluidskaart MET HDMI wordt gebruike, beginnen de MONO channels op ID 6
-            # Indien de geluidskaart ZONDER HDMI wordt gebruike, beginnen de MONO channels op ID 7
+            # Indien de geluidskaart MET HDMI wordt gebruikt, beginnen de MONO channels op device ID 6
+            # Indien de geluidskaart ZONDER HDMI wordt gebruikt, beginnen de MONO channels op device ID 7
             for d in range(8):
                 if self.DEBUG: print("Set device: " + str(device[7+d]))
                 self.audioPlayers[d].set_audiodevice(device[7+d])
