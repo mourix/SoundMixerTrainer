@@ -171,6 +171,7 @@ class PlayPage(QtWidgets.QWidget):
 
     # update afspeeltijd en repeat
     def update_timer(self):
+        self.UIController.stackedWidget.repaint()
         if self.menuState == 0 or self.menuState == 2:
             # update afspeeltijd
             self.taskbarItems0[0] = "Time: " + self.ms_to_time_string(self.AudioController.currentChannel.get_time()) \

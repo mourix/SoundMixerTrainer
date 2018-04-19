@@ -158,7 +158,6 @@ class UIController(object):
 
     # routeer fysieke knoppen op de PI naar de juiste functies
     def button_pressed(self, id, port, btnId):
-        self.stackedWidget.repaint()
         if id == 0:
             if port == 0:
                 self.page[self.stackedWidget.currentIndex()].action_button_pushed(btnId)

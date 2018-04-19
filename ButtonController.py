@@ -67,6 +67,7 @@ class ButtonController(object):
                     self.output(port, i)
         self.currVal = value
         QtTest.QTest.qWait(200)
+        #self.mcp.reset_interrupts()
         return
 
     def output(self, port, bit):
